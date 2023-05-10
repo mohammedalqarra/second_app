@@ -20,7 +20,7 @@ class homepage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Container(
-              width: 200,
+              width: 150,
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 14, 198, 161),
                 borderRadius: BorderRadius.circular(10),
