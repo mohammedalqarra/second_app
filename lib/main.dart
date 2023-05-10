@@ -1,7 +1,10 @@
+import 'package:second_app/homepage.dart';
 import 'package:flutter/material.dart';
 
+import 'homepage.dart';
+
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-   //   home:homework1(),
+      home:homepage(),
     );
   }
 }
