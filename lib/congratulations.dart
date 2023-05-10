@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class congratulations extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,6 +9,12 @@ class congratulations extends StatelessWidget {
         title: const Text("Quiz app"),
         centerTitle: true,
         backgroundColor: Color.fromARGB(255, 14, 198, 161),
+         leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+            onPressed: () {
+            // Navigator.pop(context);
+          },
+         ),
       ),
       body: Center(
         child: Column(
