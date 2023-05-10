@@ -1,7 +1,7 @@
-import 'package:second_app/homepage.dart';
+import 'package:second_app/oopps.dart';
 import 'package:flutter/material.dart';
 
-import 'congratulations.dart';
+import 'oopps.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home:congratulations(),
+      home:oopps(),
     );
   }
 }
