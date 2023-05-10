@@ -30,16 +30,16 @@ class homepage extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.email),
+              leading: Icon(Icons.create),
               title: Text('Create Quiz'),
             ),
             ListTile(
-              leading: Icon(Icons.email),
+              leading: Icon(Icons.question_mark),
               title: Text('Start  Quiz'),
             ),
             Divider(),
             ListTile(
-              leading: Icon(Icons.email),
+              leading: Icon(Icons.logout),
               title: Text('Exit'),
             ),
           ],
