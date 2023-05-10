@@ -9,6 +9,38 @@ class homepage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Color.fromARGB(255, 14, 198, 161),
       ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/quiz.png',
+              width: 200,
+              height: 200,
+            ),
+            SizedBox(height: 20),
+            Container(
+              width: 200,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 14, 198, 161),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  "Let's Start!",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       drawer: Drawer(
         elevation: 25,
         child: ListView(
