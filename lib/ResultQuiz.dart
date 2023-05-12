@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-class oopps extends StatelessWidget {
-  
+class ResultQuiz extends StatelessWidget {
+  final int score;
+
+  const ResultQuiz({required this.score});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,12 +12,12 @@ class oopps extends StatelessWidget {
         title: const Text("Quiz app"),
         centerTitle: true,
         backgroundColor: Color.fromARGB(255, 14, 198, 161),
-         leading: IconButton(
+        leading: IconButton(
           icon: Icon(Icons.arrow_back),
-            onPressed: () {
+          onPressed: () {
             // Navigator.pop(context);
           },
-         ),
+        ),
       ),
       body: Center(
         child: Column(
@@ -46,10 +49,9 @@ class oopps extends StatelessWidget {
                 child: Text(
                   "Your Score : 2 / 10",
                   style: TextStyle(
-                    fontSize: 15,
+                      fontSize: 15,
                       color: Colors.green,
-                      fontWeight: FontWeight.bold
-                      ),
+                      fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
               ),
