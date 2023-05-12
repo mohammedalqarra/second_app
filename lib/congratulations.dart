@@ -35,7 +35,7 @@ class congratulations extends StatelessWidget {
               ),
             ),
             Image.asset(
-              'assets/result.jpg',
+              'lib/assets/result.jpg',
               width: 200,
               height: 200,
             ),

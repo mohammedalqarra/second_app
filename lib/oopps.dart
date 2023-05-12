@@ -35,7 +35,7 @@ class oopps extends StatelessWidget {
               ),
             ),
             Image.asset(
-              'assets/fail.png',
+              'lib/assets/fail.png',
               width: 200,
               height: 200,
             ),
