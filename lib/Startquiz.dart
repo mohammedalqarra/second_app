@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Startquiz extends StatelessWidget {
+class Startquiz extends StatefulWidget {
+  @override
+  _StartquizState createState() => _StartquizState();
+}
+
+class _StartquizState extends State<Startquiz> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+return Scaffold(
       appBar: AppBar(
         title: const Text("Quiz app"),
         centerTitle: true,
@@ -15,7 +20,36 @@ class Startquiz extends StatelessWidget {
           },
         ),
       ),
-      body: Center(),
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+                child: const Text(
+                  "Questions 1 ",
+                  style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold
+                      ),
+                  textAlign: TextAlign.center,
+                )
+            ),
+            Container(
+              child: const Text(
+                  "/ 10",
+                  style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold
+                      ),
+                  textAlign: TextAlign.center,
+                )
+            ),
+        ]),
+      ),
     );
+
   }
 }
