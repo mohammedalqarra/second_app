@@ -60,22 +60,54 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                   children: [
                     const CircleAvatar(
                       backgroundColor: Colors.amber,
-                      radius: 25,
+                      radius: 20,
                       child: Text(
                         "A",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 30,
+                          fontSize: 18,
                         ),
                       ),
                     ),
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.only(left: 8),
                         child: TextField(
                           maxLines: null,
                           decoration: InputDecoration(
                             labelText: "First Answer",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                  children: [
+                    const CircleAvatar(
+                      backgroundColor: Colors.teal,
+                      radius: 20,
+                      child: Text(
+                        "B",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: TextField(
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            labelText: "Second Answer",
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
