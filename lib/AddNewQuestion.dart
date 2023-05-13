@@ -52,7 +52,38 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                     //    const BorderSide(color: Colors.teal, width: 3.0),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  prefixIcon: const Icon(Icons.question_mark),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                  children: [
+                    const CircleAvatar(
+                      backgroundColor: Colors.amber,
+                      radius: 25,
+                      child: Text(
+                        "A",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(left: 10),
+                        child: TextField(
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            labelText: "First Answer",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: 20),
