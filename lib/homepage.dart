@@ -7,7 +7,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Quiz app"),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 14, 198, 161),
+        backgroundColor:  Color.fromARGB(255, 14, 198, 161),
       ),
       body: Center(
         child: Column(
