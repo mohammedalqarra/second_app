@@ -247,10 +247,11 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                   ),
                 ),
                 onPressed: () => focusNode.requestFocus(),
-                child: const Text('Add question',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                child: const Text(
+                  'Add question',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],
