@@ -150,6 +150,39 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                   ],
                 ),
               ),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                  children: [
+                    const CircleAvatar(
+                      backgroundColor: Colors.pink,
+                      radius: 20,
+                      child: Text(
+                        "D",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: TextField(
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            labelText: "Fourth Answer",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
