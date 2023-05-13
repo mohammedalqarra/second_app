@@ -65,7 +65,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                         "A",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 20,
                         ),
                       ),
                     ),
@@ -97,7 +97,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                         "B",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 20,
                         ),
                       ),
                     ),
@@ -108,6 +108,38 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                           maxLines: null,
                           decoration: InputDecoration(
                             labelText: "Second Answer",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                  children: [
+                    const CircleAvatar(
+                      backgroundColor: Color.fromARGB(255, 109, 150, 221),
+                      radius: 20,
+                      child: Text(
+                        "C",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: TextField(
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            labelText: "Third Answer",
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
