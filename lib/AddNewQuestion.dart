@@ -41,14 +41,18 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
           child: Column(
             children: [
               TextField(
+                maxLines: null,
                 autofocus: true,
                 focusNode: focusNode,
                 decoration: InputDecoration(
+                  labelText: "Question",
+                  //   fillColor: Colors.red,
                   border: OutlineInputBorder(
+                    //  borderSide:
+                    //    const BorderSide(color: Colors.teal, width: 3.0),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   prefixIcon: const Icon(Icons.question_mark),
-                  labelText: 'Question',
                 ),
               ),
               const SizedBox(height: 20),
