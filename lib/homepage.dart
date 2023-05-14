@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  void navigateToHomePage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Quiz app"),
         centerTitle: true,
-        backgroundColor:  Color.fromARGB(255, 14, 198, 161),
+        backgroundColor: Color.fromARGB(255, 14, 198, 161),
       ),
       body: Center(
         child: Column(
@@ -18,16 +30,21 @@ class HomePage extends StatelessWidget {
               width: 200,
               height: 200,
             ),
-            SizedBox(height: 20),
-            Container(
-              width: 150,
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 14, 198, 161),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(10),
-                child: Text(
+            SizedBox(
+              width: 200,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {
+                  navigateToHomePage();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.all(10),
+                ),
+                child: const Text(
                   "Let's Start!",
                   style: TextStyle(
                     fontSize: 16,
