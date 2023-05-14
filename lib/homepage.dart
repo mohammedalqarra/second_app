@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:second_app/AddNewQuestion.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,6 +14,21 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void navigateToCreateQuizPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddNewQuestion()),
+    );
+  }
+
+  void navigateToStartQuizPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
+  }
+
+  void exitApp() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +48,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(
               width: 200,
-              height: 50,
+              height: 30,
               child: ElevatedButton(
                 onPressed: () {
                   navigateToHomePage();
@@ -62,8 +78,8 @@ class _HomePageState extends State<HomePage> {
         elevation: 25,
         child: ListView(
           padding: EdgeInsets.zero,
-          children: const [
-            UserAccountsDrawerHeader(
+          children: [
+            const UserAccountsDrawerHeader(
               accountName: Text('Mohammed'),
               accountEmail: Text('moh@gmail.com'),
               decoration: BoxDecoration(color: Colors.teal),
@@ -79,17 +95,26 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.create),
-              title: Text('Create Quiz'),
+              leading: const Icon(Icons.create),
+              title: const Text('Create Quiz'),
+              onTap: () {
+                navigateToCreateQuizPage();
+              },
             ),
             ListTile(
-              leading: Icon(Icons.question_mark),
-              title: Text('Start  Quiz'),
+              leading: const Icon(Icons.question_mark_outlined),
+              title: const Text('Start  Quiz'),
+              onTap: () {
+                navigateToStartQuizPage();
+              },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Exit'),
+              leading: const Icon(Icons.logout),
+              title: const Text('Exit'),
+              onTap: () {
+                exitApp();
+              },
             ),
           ],
         ),
