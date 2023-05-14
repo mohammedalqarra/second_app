@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:second_app/HomePage.dart';
 
 class ResultQuiz extends StatefulWidget {
   final int score;
@@ -34,6 +35,13 @@ class _ResultQuizState extends State<ResultQuiz> {
       resultTitle = 'Sorry, better luck next time!';
       imagePath = 'lib/assets/fail.png';
     }
+  }
+
+  void navigateToResultQuiz() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
   }
 
   @override
@@ -81,7 +89,7 @@ class _ResultQuizState extends State<ResultQuiz> {
                   fontSize: 18,
                   color: Colors.teal,
                   fontWeight: FontWeight.w600,
-                  ),
+                ),
               ),
             ),
             // SizedBox(height: 20),
@@ -101,17 +109,18 @@ class _ResultQuizState extends State<ResultQuiz> {
             Container(
               margin: const EdgeInsets.only(top: 20),
               child: ElevatedButton(
-              onPressed: () {
-                // Navigate back to the home page
-                Navigator.pop(context);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                onPressed: () {
+                  // Navigate back to the home page
+                  // Navigator.pop(context);
+                  navigateToResultQuiz();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                ),
+                child: const Text('Back to Home'),
               ),
-              child: const Text('Back to Home'),
-            ),
             ),
           ],
         ),
