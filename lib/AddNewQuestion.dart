@@ -19,17 +19,17 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
           title: const Text('Do you want to exit the app?'),
           actions: [
             ElevatedButton(
-              onPressed: () => Navigator.pop(context , false),
+              onPressed: () => Navigator.pop(context, false),
               child: const Text('No'),
-              ),
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context , true),
-                child: const Text('Yes'),
-              ),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('Yes'),
+            ),
           ],
         ),
       );
-      
+
   void navigateToAddNewQuestion() {
     Navigator.push(
       context,
