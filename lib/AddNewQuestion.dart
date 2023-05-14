@@ -250,13 +250,6 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                         elevation: 50,
                         iconSize: 20,
                         icon: Icon(Icons.arrow_drop_down, color: Colors.black),
-                        // hint: Text(
-                        //   'A',
-                        //   style: TextStyle(
-                        //     fontSize: 10,
-                        //     color: Theme.of(context).hintColor,
-                        //   ),
-                        // ),
                         items: items.map((String value) {
                           Color itemColor =
                               Colors.teal; // Specify your desired color here

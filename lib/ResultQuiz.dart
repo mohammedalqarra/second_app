@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ResultQuiz extends StatelessWidget {
-  final int score;
+ // final int score;
 
-  const ResultQuiz({required this.score});
+  //const ResultQuiz({required this.score});
 
   @override
   Widget build(BuildContext context) {
