@@ -46,13 +46,21 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                 autofocus: true,
                 focusNode: focusNode,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.question_mark),
+                  prefixIcon: const Icon(
+                    Icons.question_mark,
+                    color: Color.fromRGBO(82, 78, 78, 0.506),
+                  ),
                   labelText: "Question",
+                  labelStyle: const TextStyle(
+                    color: Color.fromRGBO(82, 78, 78, 0.506),
+                  ),
                   //   fillColor: Colors.red,
                   border: OutlineInputBorder(
-                    //  borderSide:
-                    //    const BorderSide(color: Colors.teal, width: 3.0),
-
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Colors.teal),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
@@ -79,7 +87,15 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                           maxLines: null,
                           decoration: InputDecoration(
                             labelText: "First Answer",
+                            labelStyle: const TextStyle(
+                              color: Color.fromRGBO(82, 78, 78, 0.506),
+                            ),
                             border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Colors.teal),
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
@@ -111,7 +127,16 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                           maxLines: null,
                           decoration: InputDecoration(
                             labelText: "Second Answer",
+                            labelStyle: const TextStyle(
+                              color: Color.fromRGBO(82, 78, 78, 0.506),
+                            ),
                             border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Colors.teal,
+                              ),
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
@@ -143,7 +168,16 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                           maxLines: null,
                           decoration: InputDecoration(
                             labelText: "Third Answer",
+                            labelStyle: const TextStyle(
+                              color: Color.fromRGBO(82, 78, 78, 0.506),
+                            ),
                             border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Colors.teal,
+                              ),
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
@@ -175,7 +209,16 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                           maxLines: null,
                           decoration: InputDecoration(
                             labelText: "Fourth Answer",
+                            labelStyle: const TextStyle(
+                              color: Color.fromRGBO(82, 78, 78, 0.506),
+                            ),
                             border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Colors.teal,
+                              ),
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
@@ -247,10 +290,11 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                   ),
                 ),
                 onPressed: () => focusNode.requestFocus(),
-                child: const Text('Add question',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                child: const Text(
+                  'Add question',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],
