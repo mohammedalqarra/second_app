@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:second_app/CreateQuiz.dart';
 import 'package:second_app/HomePage.dart';
 import 'package:second_app/congratulations.dart';
 
@@ -34,7 +35,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => HomePage(),
+        builder: (context) => CreateQuiz(),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:second_app/AddNewQuestion.dart';
+import 'package:second_app/CreateQuiz.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   void navigateToStartQuizPage() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => HomePage()),
+      MaterialPageRoute(builder: (context) => CreateQuiz()),
     );
   }
 
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
               height: 30,
               child: ElevatedButton(
                 onPressed: () {
-                  navigateToHomePage();
+                  navigateToStartQuizPage();
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
