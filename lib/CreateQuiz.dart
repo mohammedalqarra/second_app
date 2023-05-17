@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:second_app/AddNewQuestion.dart';
 import 'package:second_app/HomePage.dart';
 
 class CreateQuiz extends StatefulWidget {
@@ -13,7 +14,12 @@ class _CreateQuizState extends State<CreateQuiz> {
       MaterialPageRoute(builder: (context) => HomePage()),
     );
   }
-
+void navigateToAddNewQuestion() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddNewQuestion()),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +45,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 child: ElevatedButton(
                   onPressed: () {
-                    navigateToCreateQuiz();
+                    navigateToAddNewQuestion();
                   },
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -168,6 +174,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                     Column(
                       children: [
                         Container(
+                          width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {},
                             child: Text(
@@ -178,7 +185,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                             ),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.teal,
-                                fixedSize: Size(300, 40),
+                                fixedSize: Size(0, 40),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10))),
                           ),
@@ -191,6 +198,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                     Column(
                       children: [
                         Container(
+                          width: double.infinity,
                             child: ElevatedButton(
                               onPressed: () {},
                               child: Text(
@@ -202,7 +210,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                               ),
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
-                                  fixedSize: Size(300, 40),
+                                  fixedSize: Size(0, 40),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10))),
                             ),
@@ -212,6 +220,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                     Column(
                       children: [
                         Container(
+                          width: double.infinity,
                             child: ElevatedButton(
                               onPressed: () {},
                               child: Text(
@@ -223,7 +232,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                               ),
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
-                                  fixedSize: Size(300, 40),
+                                  fixedSize: Size(0, 40),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10))),
                             ),
@@ -233,6 +242,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                     Column(
                       children: [
                         Container(
+                          width: double.infinity,
                             child: ElevatedButton(
                               onPressed: () {},
                               child: Text(
@@ -244,7 +254,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                               ),
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
-                                  fixedSize: Size(300, 40),
+                                  fixedSize: Size(0, 40),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10))),
                             ),
