@@ -1,9 +1,10 @@
 import 'package:second_app/AddNewQuestion.dart';
 import 'package:second_app/HomePage.dart';
+import 'package:second_app/CreateQuiz.dart';
 import 'package:flutter/material.dart';
 //import 'package:second_app/ResultQuiz.dart';
 
-import 'HomePage.dart';
+import 'AddNewQuestion.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // home: ResultScreen(score: null),
-      home: HomePage(),
+      home: CreateQuiz(),
     );
   }
 }
