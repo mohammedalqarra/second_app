@@ -59,7 +59,6 @@ class _CreateQuizState extends State<CreateQuiz> {
                       SizedBox(width: 10),
                     ],
                   ),
-                  
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal,
                       minimumSize: Size(600, 50),
@@ -68,18 +67,18 @@ class _CreateQuizState extends State<CreateQuiz> {
                           borderRadius: BorderRadius.circular(15))),
                 ),
               ),
-              Stack(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 10),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 15),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
+              Container(
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Stack(
+                  children: [
+                    Row(
                       children: [
                         const Expanded(
                           child: Text(
@@ -89,7 +88,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                             ),
                           ),
                         ),
-                        IconButton(
+                          IconButton(
                           onPressed: () {
                             showDialog(
                               context: context,
@@ -166,13 +165,99 @@ class _CreateQuizState extends State<CreateQuiz> {
                         ),
                       ],
                     ),
-                    
-                  ),
-                ],
+                    Column(
+                      children: [
+                        Container(
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text(
+                              "A mobile development framework",
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.teal,
+                                fixedSize: Size(300, 40),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10))),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            vertical: 50,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text(
+                                "A mobile development framework",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  fixedSize: Size(300, 40),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10))),
+                            ),
+                            padding: EdgeInsets.only(top: 100)),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text(
+                                "A mobile development framework",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  fixedSize: Size(300, 40),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10))),
+                            ),
+                            padding: EdgeInsets.only(top: 150)),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text(
+                                "A mobile development framework",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  fixedSize: Size(300, 40),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10))),
+                            ),
+                            padding: EdgeInsets.only(top: 200)),
+                      ],
+                    )
+                  ],
+                ),
+                
               ),
+              
             ],
           ),
-          
         ),
       ),
       floatingActionButton: FloatingActionButton(
