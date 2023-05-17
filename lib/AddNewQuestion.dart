@@ -112,6 +112,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                     ),
                   ),
                   Container(
+                    width: double.infinity,
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       children: [
@@ -128,6 +129,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                         ),
                         Expanded(
                           child: Container(
+                            width: double.infinity,
                             padding: const EdgeInsets.only(left: 8),
                             child: TextField(
                               maxLines: null,
@@ -152,6 +154,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                     ),
                   ),
                   Container(
+                    width: double.infinity,
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       children: [
@@ -168,6 +171,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                         ),
                         Expanded(
                           child: Container(
+                            width: double.infinity,
                             padding: const EdgeInsets.only(left: 8),
                             child: TextField(
                               maxLines: null,
@@ -193,6 +197,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                     ),
                   ),
                   Container(
+                    width: double.infinity,
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       children: [
@@ -209,6 +214,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                         ),
                         Expanded(
                           child: Container(
+                            width: double.infinity,
                             padding: const EdgeInsets.only(left: 8),
                             child: TextField(
                               maxLines: null,
@@ -234,6 +240,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                     ),
                   ),
                   Container(
+                    width: double.infinity,
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       children: [
@@ -250,6 +257,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                         ),
                         Expanded(
                           child: Container(
+                            width: double.infinity,
                             padding: const EdgeInsets.only(left: 8),
                             child: TextField(
                               maxLines: null,
@@ -275,6 +283,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                     ),
                   ),
                   Container(
+                    width: double.infinity,
                     margin: EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       children: [
@@ -325,6 +334,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                       minimumSize: const Size.fromHeight(50),
                       textStyle: const TextStyle(fontSize: 15),
                       backgroundColor: Colors.teal,
+
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
