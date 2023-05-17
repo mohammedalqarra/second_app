@@ -59,6 +59,7 @@ class _CreateQuizState extends State<CreateQuiz> {
                       SizedBox(width: 10),
                     ],
                   ),
+                  
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal,
                       minimumSize: Size(600, 50),
@@ -165,11 +166,13 @@ class _CreateQuizState extends State<CreateQuiz> {
                         ),
                       ],
                     ),
+                    
                   ),
                 ],
               ),
             ],
           ),
+          
         ),
       ),
       floatingActionButton: FloatingActionButton(
