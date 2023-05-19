@@ -22,11 +22,13 @@ class _ResultQuizState extends State<ResultQuiz> {
   }
 
   void calculateResult() {
-    if (widget.score >= 75) {
+    double scorePercentage = (widget.score / 100) * 100;
+
+    if (scorePercentage >= 75) {
       resultMessage = 'Congratulations!';
       resultTitle = "You're a superstar!";
       imagePath = 'lib/assets/result.jpg';
-    } else if (widget.score >= 50) {
+    } else if (scorePercentage >= 50) {
       resultMessage = 'Congratulations!';
       resultTitle = "Keep up the good work!";
       imagePath = 'lib/assets/result.jpg';

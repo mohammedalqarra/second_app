@@ -1,13 +1,27 @@
-import 'package:second_app/AddNewQuestion.dart';
-import 'package:second_app/HomePage.dart';
-import 'package:second_app/CreateQuiz.dart';
+import 'package:second_app/Screens/AddNewQuestion.dart';
+import 'package:second_app/Screens/CreateQuiz.dart';
+import 'package:second_app/Screens/NotQuestion.dart';
 import 'package:flutter/material.dart';
 //import 'package:second_app/ResultQuiz.dart';
 
-import 'AddNewQuestion.dart';
+import 'NotQuestion.dart';
 
 void main() {
   runApp(MyApp());
+  // runApp(MaterialApp(
+  //   title: 'Quzi App',
+  //   theme: ThemeData(
+  //     primarySwatch: Colors.green,
+  //   ),
+
+  //   initialRoute:'/',
+
+  //   routes:{
+  //     '/': (context) => Startquiz(),
+
+  // //    '/seccond': (context) => ResultQuiz(),
+  //   },
+  // ));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +31,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // home: ResultScreen(score: null),
-      home: AddNewQuestion(),
+      home: NotQuestion(),
     );
   }
 }

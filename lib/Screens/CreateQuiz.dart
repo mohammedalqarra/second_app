@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:second_app/AddNewQuestion.dart';
+import 'package:second_app/Screens/AddNewQuestion.dart';
 import 'package:second_app/HomePage.dart';
 
 class CreateQuiz extends StatefulWidget {
   @override
   _CreateQuizState createState() => _CreateQuizState();
+
+  
 }
 
 class _CreateQuizState extends State<CreateQuiz> {
@@ -20,6 +22,7 @@ void navigateToAddNewQuestion() {
       MaterialPageRoute(builder: (context) => AddNewQuestion()),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,10 +91,12 @@ void navigateToAddNewQuestion() {
                       children: [
                         const Expanded(
                           child: Text(
-                            'What is Flutter?',
+                            'What is Flutter ?',
                             style: TextStyle(
                               fontSize: 18,
                             ),
+                            maxLines: null,
+                            overflow: TextOverflow.clip,
                           ),
                         ),
                           IconButton(
@@ -274,7 +279,7 @@ void navigateToAddNewQuestion() {
         child: Icon(Icons.add),
         backgroundColor: Colors.teal,
         onPressed: () {
-          navigateToCreateQuiz();
+          navigateToAddNewQuestion();
         },
       ),
     );

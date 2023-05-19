@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:second_app/AddNewQuestion.dart';
-import 'package:second_app/CreateQuiz.dart';
+import 'package:second_app/Screens/AddNewQuestion.dart';
+import 'package:second_app/Screens/CreateQuiz.dart';
 
 class HomePage extends StatefulWidget {
   @override
