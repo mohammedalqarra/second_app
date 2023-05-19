@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import '../DataBase/databaseController.dart';
 import '../Models/databaseModel.dart';
 
+// The Database Provider class acts as a bridge between the UI components and the Database Controller
 class DatabaseProvider with ChangeNotifier {
   List<DataBaseModel> questions = [];
-
+  // form State is a Global Key object that is used to manage the state of the form in the UI.
   GlobalKey<FormState> formState = GlobalKey<FormState>();
 
   TextEditingController titleQuestion = TextEditingController();
