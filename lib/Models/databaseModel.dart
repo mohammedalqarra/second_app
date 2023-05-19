@@ -10,6 +10,7 @@ class DataBaseModel {
   late String correctAnswer;
 
   DataBaseModel({
+    
     required this.titleQuestion,
     required this.firstAnswer,
     required this.secondAnswer,

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:second_app/HomePage.dart';
+import 'package:second_app/Provider/databaseProvider.dart';
+import 'package:second_app/DataBase/databaseController.dart';
+import 'package:second_app/Models/databaseModel.dart';
 
 class ResultQuiz extends StatefulWidget {
   final int score;

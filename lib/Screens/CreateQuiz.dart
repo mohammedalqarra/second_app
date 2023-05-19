@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:second_app/Screens/AddNewQuestion.dart';
 import 'package:second_app/HomePage.dart';
+import 'package:second_app/Provider/databaseProvider.dart';
+import 'package:second_app/DataBase/databaseController.dart';
+import 'package:second_app/Models/databaseModel.dart';
 
 class CreateQuiz extends StatefulWidget {
+  const CreateQuiz({Key? key}) : super(key: key);
   @override
   _CreateQuizState createState() => _CreateQuizState();
-
-  
 }
 
 class _CreateQuizState extends State<CreateQuiz> {
+  
   void navigateToCreateQuiz() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => HomePage()),
     );
   }
-void navigateToAddNewQuestion() {
+
+  void navigateToAddNewQuestion() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => AddNewQuestion()),
@@ -99,7 +103,7 @@ void navigateToAddNewQuestion() {
                             overflow: TextOverflow.clip,
                           ),
                         ),
-                          IconButton(
+                        IconButton(
                           onPressed: () {
                             showDialog(
                               context: context,
@@ -203,7 +207,7 @@ void navigateToAddNewQuestion() {
                     Column(
                       children: [
                         Container(
-                          width: double.infinity,
+                            width: double.infinity,
                             child: ElevatedButton(
                               onPressed: () {},
                               child: Text(
@@ -225,7 +229,7 @@ void navigateToAddNewQuestion() {
                     Column(
                       children: [
                         Container(
-                          width: double.infinity,
+                            width: double.infinity,
                             child: ElevatedButton(
                               onPressed: () {},
                               child: Text(
@@ -247,7 +251,7 @@ void navigateToAddNewQuestion() {
                     Column(
                       children: [
                         Container(
-                          width: double.infinity,
+                            width: double.infinity,
                             child: ElevatedButton(
                               onPressed: () {},
                               child: Text(
@@ -268,9 +272,7 @@ void navigateToAddNewQuestion() {
                     )
                   ],
                 ),
-                
               ),
-              
             ],
           ),
         ),

@@ -14,6 +14,7 @@ class DatabaseProvider with ChangeNotifier {
   TextEditingController thirdAnswer = TextEditingController();
   TextEditingController fourthAnswer = TextEditingController();
   String correctAnswer = 'B';
+  
 
   void insertNewQuestion() {
     DatabaseController().insertNewQuestion(DataBaseModel(

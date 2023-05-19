@@ -79,7 +79,7 @@ class DatabaseController {
 
   Future<List<DataBaseModel>> selectAllQuestion() async {
     List<Map<String, Object?>> rowsAsMap = await database!.query(tableQuestion);
- //   questions = rowsAsMap.map((e) => DataBaseModel.fromMap(e)).toList();
+    questions = rowsAsMap.map((e) => DataBaseModel.fromMap(e)).toList();
     return questions;
   }
 
