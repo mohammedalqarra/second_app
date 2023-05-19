@@ -17,7 +17,8 @@ class DataBaseModel {
     required this.fourthAnswer,
     required this.correctAnswer,
   });
-
+// The from Map constructor allows creating a DataBase Model instance from a Map<String, dynamic>.
+// It retrieves the values from the map using the column names provided by the DatabaseController class.
   DataBaseModel.formMap(Map<String, dynamic> map) {
     id = map[DatabaseController().questionId];
     titleQuestion = map[DatabaseController().titleQuestion];
@@ -27,7 +28,7 @@ class DataBaseModel {
     fourthAnswer = map[DatabaseController().fourthAnswer];
     correctAnswer = map[DatabaseController().correctAnswer];
   }
-
+  // DataBase Model instance into a Map<String, dynamic>. 
   Map<String, dynamic> toMap() {
     return {
       DatabaseController().questionId: id,
