@@ -82,4 +82,8 @@ class DatabaseController {
  //   questions = rowsAsMap.map((e) => DataBaseModel.fromMap(e)).toList();
     return questions;
   }
+
+  deleteQuestion(int id){
+    database!.delete(tableQuestion,where: '$questionId=?',whereArgs: [id]);
+  }
 }
