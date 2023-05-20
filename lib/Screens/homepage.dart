@@ -1,20 +1,24 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:second_app/Provider/databaseProvider.dart';
 import 'package:second_app/Screens/AddNewQuestion.dart';
 import 'package:second_app/Screens/CreateQuiz.dart';
 import 'package:second_app/Screens/NotQuestion.dart';
 import '../app_routes.dart';
+import '../ExitDialog.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
-  
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  // TODO: implement initState
+
   void initState() {
     super.initState();
     Provider.of<DatabaseProvider>(context, listen: false).selectAllQuestions();
