@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   databaseProvider.score = 0;
                   databaseProvider.selectedAnswer = '0';
-                  if (databaseProvider.question.length < 5) {
+                  if (databaseProvider.questions.length < 5) {
                     AppRouter.pushWidget(NotQuestion());
                   } else {
                     AppRouter.pushWidget(AddNewQuestion());
@@ -166,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     databaseProvider.score = 0;
                     databaseProvider.selectedAnswer = '0';
-                    if (databaseProvider.question.length < 5) {
+                    if (databaseProvider.questions.length < 5) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
