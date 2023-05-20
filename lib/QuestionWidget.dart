@@ -33,8 +33,8 @@ class _QuestionWidgetState extends State<QuestionWidget> {
               SizedBox(
                 width: 320,
                 child: Text(
-                  widget.dataBaseModel.question,
-                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  widget.dataBaseModel.titleQuestion ,
+                  style: TextStyle(fontSize: 20, color: Colors.white , backgroundColor: Colors.teal),
                 ),
               ),
               const Spacer(),
@@ -47,12 +47,87 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                       );
                     });
               },
-              child: Icon(Icons.delete, color: Colors.teal[100] ,  size: 30),
+              child: Icon(
+                Icons.delete,
+                color: Color.fromARGB(255, 162, 161, 161),
+                size: 30),
               ),
             ],
           ),
-
-          
+          SizedBox(height: 10),
+          Container(
+            width:350,
+            padding: EdgeInsets.all(10),
+            margin: EdgeInsets.only(top:10),
+            decoration:  BoxDecoration(
+              color: widget.dataBaseModel.correctAnswer == 'A' ? Colors.green[300] : Colors.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              widget.dataBaseModel.firstAnswer,
+              style: TextStyle(
+                              color: widget.dataBaseModel.correctAnswer == 'A'
+                      ? Colors.green[300]
+                      : Colors.white,
+                      fontSize: 20,
+              ),
+            )
+          ),
+          Container(
+             width:350,
+            padding: EdgeInsets.all(10),
+            margin: EdgeInsets.only(top:10),
+            decoration:  BoxDecoration(
+              color: widget.dataBaseModel.correctAnswer == 'B' ? Colors.green[300] : Colors.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              widget.dataBaseModel.secondAnswer,
+              style: TextStyle(
+                              color: widget.dataBaseModel.correctAnswer == 'B'
+                      ? Colors.green[300]
+                      : Colors.white,
+                      fontSize: 20,
+              ),
+            )
+          ),
+          Container(
+            width:350,
+            padding: EdgeInsets.all(10),
+            margin: EdgeInsets.only(top:10),
+            decoration:  BoxDecoration(
+              color: widget.dataBaseModel.correctAnswer == 'C' ? Colors.green[300] : Colors.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              widget.dataBaseModel.thirdAnswer,
+              style: TextStyle(
+                              color: widget.dataBaseModel.correctAnswer == 'C'
+                      ? Colors.green[300]
+                      : Colors.white,
+                      fontSize: 20,
+              ),
+            )
+          ),
+           Container(
+              width: 350,
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.only(top: 10),
+              decoration: BoxDecoration(
+                color: widget.dataBaseModel.correctAnswer == 'D'
+                    ? Colors.green[300]
+                    : Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                widget.dataBaseModel.fourthAnswer,
+                style: TextStyle(
+                  color: widget.dataBaseModel.correctAnswer == 'D'
+                      ? Colors.green[300]
+                      : Colors.white,
+                  fontSize: 20,
+                ),
+              )),
         ],
       ),
     );

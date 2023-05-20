@@ -29,7 +29,6 @@ class DataBaseModel {
     correctAnswer = map[DatabaseController.correctAnswer];
   }
 
-  String get question => null;
   // DataBase Model instance into a Map<String, dynamic>.
   Map<String, dynamic> toMap() {
     return {
