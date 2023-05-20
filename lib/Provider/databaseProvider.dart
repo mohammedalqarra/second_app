@@ -14,7 +14,15 @@ class DatabaseProvider with ChangeNotifier {
   TextEditingController thirdAnswer = TextEditingController();
   TextEditingController fourthAnswer = TextEditingController();
   String correctAnswer = 'B';
+
   
+  int score = 0;
+  String selectedAnswer = '0';
+
+  changeSelectedAnswer(String selected) {
+    selectedAnswer = selected;
+    notifyListeners();
+  }
 
   void insertNewQuestion() {
     DatabaseController().insertNewQuestion(DataBaseModel(
