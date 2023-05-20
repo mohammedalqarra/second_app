@@ -71,8 +71,8 @@ class DatabaseController {
     await _database.close();
   }
 
-  Future<void> insertNewQuestion(DataBaseModel questionModel) async {
-    int rowIndex = await database!.insert(tableQuestion, questionModel.toMap());
+  Future<void> insertNewQuestion(DataBaseModel dataBaseModel) async {
+    int rowIndex = await database!.insert(tableQuestion, dataBaseModel.toMap());
     log(rowIndex.toString());
   }
 
