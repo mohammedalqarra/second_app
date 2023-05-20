@@ -12,15 +12,15 @@ class DatabaseController {
     initDatabase();
   }
   // The Database Controller class is defined, representing a controller for managing the database operations.
-  
-  String tableQuestion = 'quizTable';
-  String questionId = 'id';
-  String titleQuestion = 'question';
-  String firstAnswer = 'firstAnswer';
-  String secondAnswer = 'secondAnswer';
-  String thirdAnswer = 'thirdAnswer';
-  String fourthAnswer = 'fourthAnswer';
-  String correctAnswer = 'correctAnswer';
+
+  static String tableQuestion = 'quizTable';
+  static String questionId = 'id';
+  static String titleQuestion = 'question';
+  static String firstAnswer = 'firstAnswer';
+  static String secondAnswer = 'secondAnswer';
+  static String thirdAnswer = 'thirdAnswer';
+  static String fourthAnswer = 'fourthAnswer';
+  static String correctAnswer = 'correctAnswer';
 
   Database? database;
 
@@ -42,7 +42,6 @@ class DatabaseController {
 
   // the database by opening a connection.
   Future<void> _createTable(Database db, int version) async {
-
     // it executes an SQL command to create a table with the provided table and column names.
 
     await db.execute('''
@@ -79,11 +78,13 @@ class DatabaseController {
 
   Future<List<DataBaseModel>> selectAllQuestion() async {
     List<Map<String, Object?>> rowsAsMap = await database!.query(tableQuestion);
-    questions = rowsAsMap.map((e) => DataBaseModel.fromMap(e)).toList();
+      questions = rowsAsMap.map((e) => DataBaseModel.fromMap(e)).toList();
+
+
     return questions;
   }
 
-  deleteQuestion(int id){
-    database!.delete(tableQuestion,where: '$questionId=?',whereArgs: [id]);
+  deleteQuestion(int id) {
+    database!.delete(tableQuestion, where: '$questionId=?', whereArgs: [id]);
   }
 }

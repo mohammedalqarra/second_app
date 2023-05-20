@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:second_app/HomePage.dart';
 import 'package:second_app/Screens/congratulations.dart';
+import 'package:second_app/Screens/homepage.dart';
 
 class AddNewQuestion extends StatefulWidget {
   const AddNewQuestion({super.key});
