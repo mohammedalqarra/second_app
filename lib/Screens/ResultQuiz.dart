@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:second_app/Provider/databaseProvider.dart';
 import 'package:second_app/DataBase/databaseController.dart';
 import 'package:second_app/Models/databaseModel.dart';
@@ -17,7 +19,9 @@ class _ResultQuizState extends State<ResultQuiz> {
   String resultMessage = '';
   String resultTitle = '';
   String imagePath = '';
+  int score = 0;
 
+  
   @override
   void initState() {
     super.initState();
