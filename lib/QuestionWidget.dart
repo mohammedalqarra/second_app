@@ -34,7 +34,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 width: 320,
                 child: Text(
                   widget.dataBaseModel.titleQuestion ,
-                  style: TextStyle(fontSize: 20, color: Colors.white , backgroundColor: Colors.teal),
+                  style: const TextStyle(fontSize: 20, color: Colors.white , backgroundColor: Colors.teal),
                 ),
               ),
               const Spacer(),
