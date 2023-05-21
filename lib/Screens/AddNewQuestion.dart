@@ -57,12 +57,11 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
   bool hasFocus = false;
 
   List<String> items = <String>['A', 'B', 'C', 'D'];
-  String dropdownValue = "A";
+  String correctAnswer = 'A';
 
   @override
   void dispose() {
     focusNode.dispose();
-
     super.dispose();
   }
 
@@ -74,8 +73,8 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
         final shouldPop = await showWarning(context);
         return shouldPop ?? false;
       },
-      child: Consumer<DataBaseModel>(
-        builder: (context, dataBaseModel, child) {
+      child: Consumer<DatabaseProvider>(
+        builder: (context, databaseProvider, child) {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.teal,
@@ -92,13 +91,20 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    child: Form(
-                     // key: DatabaseProvider.fromState,
-                       child: Column(
+                child: Form(
+                  key: databaseProvider.formState,
+                  child: Column(
                     children: [
-                      TextField(
-                        //controller: DatabaseProvider.questionController,
-                        
+                      TextFormField(
+                        controller: databaseProvider.titleQuestion,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text titleQuestion';
+                          }
+                          return null;
+                        },
+                        textInputAction: TextInputAction.next,
+                        style: TextStyle(color: Colors.black, fontSize: 20),
                         maxLines: null,
                         autofocus: true,
                         focusNode: focusNode,
@@ -111,6 +117,8 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                           labelStyle: const TextStyle(
                             color: Color.fromRGBO(82, 78, 78, 0.506),
                           ),
+                          fillColor: Colors.white,
+                          filled: true,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -121,177 +129,232 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          children: [
-                            const CircleAvatar(
-                              backgroundColor: Colors.amber,
-                              radius: 20,
-                              child: Text(
-                                "A",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                padding: const EdgeInsets.only(left: 8),
-                                child: TextField(
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    labelText: "First Answer",
-                                    labelStyle: const TextStyle(
-                                      color: Color.fromRGBO(82, 78, 78, 0.506),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          const BorderSide(color: Colors.teal),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          children: [
-                            const CircleAvatar(
-                              backgroundColor: Colors.teal,
-                              radius: 20,
-                              child: Text(
-                                "B",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                padding: const EdgeInsets.only(left: 8),
-                                child: TextField(
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    labelText: "Second Answer",
-                                   // hintText: "Enter Second answer",
-                                    labelStyle: const TextStyle(
-                                      color: Color.fromRGBO(82, 78, 78, 0.506),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                        color: Colors.teal,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                  obscureText: true,
-                                  keyboardType: TextInputType.datetime,
-                                  //onChanged: (value) =>  name = value,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          children: [
-                            const CircleAvatar(
-                              backgroundColor:
-                                  Color.fromARGB(255, 109, 150, 221),
-                              radius: 20,
-                              child: Text(
-                                "C",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                padding: const EdgeInsets.only(left: 8),
-                                child: TextField(
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    labelText: "Third Answer",
-                                    labelStyle: const TextStyle(
-                                      color: Color.fromRGBO(82, 78, 78, 0.506),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                        color: Colors.teal,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          children: [
-                            const CircleAvatar(
-                              backgroundColor: Colors.pink,
-                              radius: 20,
-                              child: Text(
-                                "D",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                padding: const EdgeInsets.only(left: 8),
-                                child: TextField(
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    labelText: "Fourth Answer",
-                                    labelStyle: const TextStyle(
-                                      color: Color.fromRGBO(82, 78, 78, 0.506),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                        color: Colors.teal,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
                         margin: EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           children: [
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 10),
+                              child: Row(
+                                children: [
+                                  const CircleAvatar(
+                                    backgroundColor: Colors.amber,
+                                    radius: 20,
+                                    child: Text(
+                                      "A",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      padding: const EdgeInsets.only(left: 8),
+                                      child: TextFormField(
+                                        controller:
+                                            databaseProvider.firstAnswer,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Please enter some text firstAnswer';
+                                          }
+                                          return null;
+                                        },
+                                        textInputAction: TextInputAction.next,
+                                        maxLines: null,
+                                        decoration: InputDecoration(
+                                          labelText: "First Answer",
+                                          labelStyle: const TextStyle(
+                                            color: Color.fromRGBO(
+                                                82, 78, 78, 0.506),
+                                          ),
+                                          fillColor: Colors.white,
+                                          filled: true,
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: const BorderSide(
+                                                color: Colors.teal),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 10),
+                              child: Row(
+                                children: [
+                                  const CircleAvatar(
+                                    backgroundColor: Colors.teal,
+                                    radius: 20,
+                                    child: Text(
+                                      "B",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      padding: const EdgeInsets.only(left: 8),
+                                      child: TextFormField(
+                                        controller:
+                                            databaseProvider.secondAnswer,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Please enter some text secondAnswer';
+                                          }
+                                          return null;
+                                        },
+                                        textInputAction: TextInputAction.next,
+                                        maxLines: null,
+                                        decoration: InputDecoration(
+                                          labelText: "Second Answer",
+                                          // hintText: "Enter Second answer",
+                                          labelStyle: const TextStyle(
+                                            color: Color.fromRGBO(
+                                                82, 78, 78, 0.506),
+                                          ),
+                                          fillColor: Colors.white,
+                                          filled: true,
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: const BorderSide(
+                                              color: Colors.teal,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                        obscureText: true,
+                                        keyboardType: TextInputType.datetime,
+                                        //onChanged: (value) =>  name = value,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 10),
+                              child: Row(
+                                children: [
+                                  const CircleAvatar(
+                                    backgroundColor:
+                                        Color.fromARGB(255, 109, 150, 221),
+                                    radius: 20,
+                                    child: Text(
+                                      "C",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      padding: const EdgeInsets.only(left: 8),
+                                      child: TextFormField(
+                                        controller:
+                                            databaseProvider.thirdAnswer,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Please enter some text thirdAnswer';
+                                          }
+                                          return null;
+                                        },
+                                        textInputAction: TextInputAction.next,
+                                        maxLines: null,
+                                        decoration: InputDecoration(
+                                          labelText: "Third Answer",
+                                          labelStyle: const TextStyle(
+                                            color: Color.fromRGBO(
+                                                82, 78, 78, 0.506),
+                                          ),
+                                          fillColor: Colors.white,
+                                          filled: true,
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: const BorderSide(
+                                              color: Colors.teal,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 10),
+                              child: Row(
+                                children: [
+                                  const CircleAvatar(
+                                    backgroundColor: Colors.pink,
+                                    radius: 20,
+                                    child: Text(
+                                      "D",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      padding: const EdgeInsets.only(left: 8),
+                                      child: TextFormField(
+                                        controller:
+                                            databaseProvider.fourthAnswer,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Please enter some text fourthAnswer';
+                                          }
+                                          return null;
+                                        },
+                                        maxLines: null,
+                                        decoration: InputDecoration(
+                                          labelText: "Fourth Answer",
+                                          labelStyle: const TextStyle(
+                                            color: Color.fromRGBO(
+                                                82, 78, 78, 0.506),
+                                          ),
+                                          fillColor: Colors.white,
+                                          filled: true,
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: const BorderSide(
+                                              color: Colors.teal,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                             Container(
                               width: 230,
                               child: const Text(
@@ -321,12 +384,13 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                                     ),
                                   );
                                 }).toList(),
-                                onChanged: (String? newValue) {
+                                onChanged: (String? correctAnswer) {
                                   setState(() {
-                                    dropdownValue = newValue!;
+                                    databaseProvider.correctAnswer =
+                                        correctAnswer!;
                                   });
                                 },
-                                value: dropdownValue,
+                                value: correctAnswer,
                               ),
                             ),
                           ],
@@ -343,7 +407,11 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                           ),
                         ),
                         onPressed: () {
-                          navigateToAddNewQuestion();
+                          //  navigateToAddNewQuestion();
+                          if (databaseProvider.formState.currentState!
+                              .validate()) {
+                            databaseProvider.insertNewQuestion();
+                          }
                         },
                         child: const Text(
                           'Add question',
@@ -354,7 +422,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                       ),
                     ],
                   ),
-                    ),
+                ),
               ),
             ),
           );
