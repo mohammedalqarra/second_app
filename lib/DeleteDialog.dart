@@ -7,8 +7,8 @@ import 'package:second_app/Provider/databaseProvider.dart';
 import 'package:second_app/app_routes.dart';
 
 class DeleteDialog extends StatefulWidget {
-  final int qID;
-  const DeleteDialog({Key? key, required this.qID}) : super(key: key);
+  final int deleteID;
+  const DeleteDialog({Key? key, required this.deleteID}) : super(key: key);
 
   @override
   State<DeleteDialog> createState() => _DeleteDialogState();
@@ -54,6 +54,7 @@ class _DeleteDialogState extends State<DeleteDialog> {
             "Cancel",
             style: TextStyle(
               color: Colors.teal,
+              fontSize: 16,
             ),
           ),
           onPressed: () {
@@ -68,13 +69,14 @@ class _DeleteDialogState extends State<DeleteDialog> {
                 "Delete",
                 style: TextStyle(
                   color: Colors.teal,
+                  fontSize: 16,
                 ),
               ),
               onPressed: () {
                 // Perform the delete operation here
                 // Navigator.of(context).pop(); // Close the dialog
 
-                databaseProvider.deleteQuestion(widget.qID);
+                databaseProvider.deleteQuestion(widget.deleteID);
                 AppRouter.popWidget();
               },
             );

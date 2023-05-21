@@ -182,6 +182,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                                   maxLines: null,
                                   decoration: InputDecoration(
                                     labelText: "Second Answer",
+                                   // hintText: "Enter Second answer",
                                     labelStyle: const TextStyle(
                                       color: Color.fromRGBO(82, 78, 78, 0.506),
                                     ),
@@ -195,6 +196,9 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
+                                  obscureText: true,
+                                  keyboardType: TextInputType.datetime,
+                                  //onChanged: (value) =>  name = value,
                                 ),
                               ),
                             ),

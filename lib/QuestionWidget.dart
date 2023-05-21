@@ -43,11 +43,11 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                     context: context,
                     builder: (context) {
                       return DeleteDialog(
-                        qID: widget.dataBaseModel.id!,
+                        deleteID: widget.dataBaseModel.id!,
                       );
                     });
               },
-              child: Icon(
+              child: const Icon(
                 Icons.delete,
                 color: Color.fromARGB(255, 162, 161, 161),
                 size: 30),
@@ -61,6 +61,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
             margin: EdgeInsets.only(top:10),
             decoration:  BoxDecoration(
               color: widget.dataBaseModel.correctAnswer == 'A' ? Colors.green[300] : Colors.white,
+              
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
