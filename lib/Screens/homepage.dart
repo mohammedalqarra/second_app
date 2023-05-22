@@ -6,6 +6,8 @@ import 'package:second_app/Provider/databaseProvider.dart';
 import 'package:second_app/Screens/AddNewQuestion.dart';
 import 'package:second_app/Screens/CreateQuiz.dart';
 import 'package:second_app/Screens/NotQuestion.dart';
+import 'package:second_app/Screens/congratulations.dart';
+import 'package:second_app/StartQuiz.dart';
 import '../app_routes.dart';
 import '../ExitDialog.dart';
 
@@ -166,20 +168,23 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     databaseProvider.score = 0;
                     databaseProvider.selectedAnswer = '0';
+                    AppRouter.popWidget();
                     if (databaseProvider.questions.length < 5) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NotQuestion(),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => NotQuestion(),
+                      //   ),
+                      // );
+                      AppRouter.pushWidget(NotQuestion());
                     } else {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AddNewQuestion(),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => AddNewQuestion(),
+                      //   ),
+                      // );
+                      AppRouter.pushWidget(AddNewQuestion());
                     }
                   },
                   child: const ListTile(
