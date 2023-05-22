@@ -7,45 +7,14 @@ import 'package:second_app/Models/databaseModel.dart';
 import 'package:second_app/Screens/homepage.dart';
 
 class ResultQuiz extends StatefulWidget {
-  final int score;
-
-  ResultQuiz({required this.score});
+  const ResultQuiz({Key? key}) : super(key: key);
 
   @override
   _ResultQuizState createState() => _ResultQuizState();
 }
 
 class _ResultQuizState extends State<ResultQuiz> {
-  String resultMessage = '';
-  String resultTitle = '';
-  String imagePath = '';
-  int score = 0;
-
-  
   @override
-  void initState() {
-    super.initState();
-    calculateResult();
-  }
-
-  void calculateResult() {
-    double scorePercentage = (widget.score / 100) * 100;
-
-    if (scorePercentage >= 75) {
-      resultMessage = 'Congratulations!';
-      resultTitle = "You're a superstar!";
-      imagePath = 'lib/assets/result.jpg';
-    } else if (scorePercentage >= 50) {
-      resultMessage = 'Congratulations!';
-      resultTitle = "Keep up the good work!";
-      imagePath = 'lib/assets/result.jpg';
-    } else {
-      resultMessage = 'Oops!';
-      resultTitle = 'Sorry, better luck next time!';
-      imagePath = 'lib/assets/fail.png';
-    }
-  }
-
   void navigateToResultQuiz() {
     Navigator.push(
       context,
@@ -55,86 +24,92 @@ class _ResultQuizState extends State<ResultQuiz> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Quiz app"),
-        centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 14, 198, 161),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            // Navigator.pop(context);
-          },
+    return Consumer<DatabaseProvider>(
+        builder: (context, databaseProvider, child) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text("Quiz app"),
+          centerTitle: true,
+          backgroundColor: Color.fromARGB(255, 14, 198, 161),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 20),
-            Container(
-              margin: const EdgeInsets.only(bottom: 10),
-              child: Text(
-                resultMessage,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.teal,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Image.asset(
-              imagePath,
-              width: 200,
-              height: 200,
-            ),
-            SizedBox(height: 20),
-            Container(
-              margin: const EdgeInsets.only(bottom: 10),
-              child: Text(
-                'Score: ${widget.score}%',
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.teal,
-                  fontWeight: FontWeight.w600,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                child: Text(
+                  databaseProvider.resultMessage,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.teal,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
-            ),
-            // SizedBox(height: 20),
-            Container(
-              margin: const EdgeInsets.only(bottom: 5),
-              child: Text(
-                resultTitle,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.normal,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
+              Image.asset(
+                databaseProvider.imagePath,
+                width: 200,
+                height: 200,
               ),
-            ),
-            SizedBox(height: 20),
-            Container(
-              margin: const EdgeInsets.only(top: 20),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Navigate back to the home page
-                  // Navigator.pop(context);
-                  navigateToResultQuiz();
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                child: Text(
+                  'Score: ${databaseProvider.score}/${databaseProvider.questions.length}(${databaseProvider.score.toStringAsFixed(2)}%)',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.teal,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                child: const Text('Back to Home'),
               ),
-            ),
-          ],
+              // SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.only(bottom: 5),
+                child: Text(
+                  databaseProvider.resultTitle,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: 20),
+              Container(
+                margin: const EdgeInsets.only(top: 20),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Navigate back to the home page
+                    // Navigator.pop(context);
+                    navigateToResultQuiz();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.teal,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 10),
+                        shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      )
+                  ),
+                  child: const Text('Back to Home'),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
 

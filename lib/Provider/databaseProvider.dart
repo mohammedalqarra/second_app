@@ -19,9 +19,32 @@ class DatabaseProvider with ChangeNotifier {
   int score = 0;
   String selectedAnswer = '0';
 
-  changeSelectedAnswer(String selected) {
+  void  changeSelectedAnswer(String selected) {
     selectedAnswer = selected;
     notifyListeners();
+  }
+
+  
+  String resultMessage = '';
+  String resultTitle = '';
+  String imagePath = '';
+
+
+  void calculateResult() {
+    double scorePercentage = (score / questions.length ) * 100;
+    if (scorePercentage >= 75) {
+      resultMessage = 'Congratulations!';
+      resultTitle = "You're a superstar!";
+      imagePath = 'lib/assets/result.jpg';
+    } else if (scorePercentage >= 50) {
+      resultMessage = 'Congratulations!';
+      resultTitle = "Keep up the good work!";
+      imagePath = 'lib/assets/result.jpg';
+    } else {
+      resultMessage = 'Oops!';
+      resultTitle = 'Sorry, better luck next time!';
+      imagePath = 'lib/assets/fail.png';
+    }
   }
 
   void insertNewQuestion() {
