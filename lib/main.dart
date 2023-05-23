@@ -10,7 +10,7 @@ import 'app_routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DatabaseController().initDatabase();
+  await DatabaseController.quizDatabase.initDatabase();
   runApp(const MyApp());
 }
 
@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<DatabaseProvider>(
-          create: (context) => DatabaseProvider(),
-        ),
-      ],
-      child: ScreenUtilInit(
+        create: (context) => DatabaseProvider(),
+      ),
+        ],
+    child: ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,
         builder: (context, child) {

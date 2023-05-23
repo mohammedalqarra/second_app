@@ -13,42 +13,37 @@ class DatabaseProvider with ChangeNotifier {
   TextEditingController secondAnswer = TextEditingController();
   TextEditingController thirdAnswer = TextEditingController();
   TextEditingController fourthAnswer = TextEditingController();
-  String correctAnswer = 'A';
+  String correctAnswer = 'B';
 
-  
-  int score = 0;
+  int score = 0 ;
   String selectedAnswer = '0';
-
-  void  changeSelectedAnswer(String selected) {
+  changeSelectedAnswer(String selected){
     selectedAnswer = selected;
     notifyListeners();
   }
 
-  
-  String resultMessage = '';
   String resultTitle = '';
   String imagePath = '';
+  String resultMessage = '';
 
-
-  void calculateResult() {
-    double scorePercentage = (score / questions.length ) * 100;
-    if (scorePercentage >= 75) {
-      resultMessage = 'Congratulations!';
-      resultTitle = "You're a superstar!";
+  calculateResult(){
+    if (score >= questions.length * 0.75){
+      resultTitle = 'Congratulations!';
       imagePath = 'lib/assets/result.jpg';
-    } else if (scorePercentage >= 50) {
-      resultMessage = 'Congratulations!';
-      resultTitle = "Keep up the good work!";
+      resultMessage = "You're a superstar!";
+    }else if(score >= questions.length * 0.50){
+      resultTitle = 'Congratulations!';
       imagePath = 'lib/assets/result.jpg';
-    } else {
-      resultMessage = 'Oops!';
-      resultTitle = 'Sorry, better luck next time!';
+      resultMessage = "Keep up the good work!";
+    }else{
+      resultTitle = 'Oops!';
       imagePath = 'lib/assets/fail.png';
+      resultMessage = "Sorry, better luck next time!";
     }
-  }
 
+  }
   void insertNewQuestion() {
-    DatabaseController().insertNewQuestion(
+    DatabaseController.quizDatabase.insertNewQuestion(
       DataBaseModel(
       titleQuestion: titleQuestion.text,
       firstAnswer: firstAnswer.text,
@@ -63,18 +58,18 @@ class DatabaseProvider with ChangeNotifier {
     secondAnswer.text = '';
     thirdAnswer.text = '';
     fourthAnswer.text = '';
-    correctAnswer = 'B';
+    correctAnswer = 'A';
 
     selectAllQuestions();
   }
 
   void selectAllQuestions() async {
-    questions = await DatabaseController().selectAllQuestion();
+    questions = await DatabaseController.quizDatabase.selectAllQuestion();
     notifyListeners();
   }
 
   void deleteQuestion(int id) async {
-    await DatabaseController().deleteQuestion(id);
+    await DatabaseController.quizDatabase.deleteQuestion(id);
     selectAllQuestions();
   }
 }

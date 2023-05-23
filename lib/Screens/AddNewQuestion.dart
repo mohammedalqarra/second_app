@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:second_app/Screens/congratulations.dart';
 import 'package:second_app/Screens/homepage.dart';
 import 'package:second_app/DataBase/databaseController.dart';
@@ -35,56 +32,32 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
         ),
       );
 
-  void navigateToAddNewQuestion() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HomePage(),
-      ),
-    );
-  }
-
-  void navigateToAddNewQuestions() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => congratulations(),
-      ),
-    );
-  }
-
   FocusNode focusNode = FocusNode();
   bool hasFocus = false;
 
   List<String> items = <String>['A', 'B', 'C', 'D'];
   String correctAnswer = 'A';
 
-  @override
-  void dispose() {
-    focusNode.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   focusNode.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        print('Back Button pressed');
-        final shouldPop = await showWarning(context);
-        return shouldPop ?? false;
-      },
-      child: Consumer<DatabaseProvider>(
+    // return WillPopScope(
+    //   onWillPop: () async {
+    //     print('Back Button pressed');
+    //     final shouldPop = await showWarning(context);
+    //     return shouldPop ?? false;
+    //   },
+      return Consumer<DatabaseProvider>(
         builder: (context, databaseProvider, child) {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.teal,
               title: const Text("Add new question"),
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  navigateToAddNewQuestion();
-                },
-              ),
               centerTitle: true,
             ),
             body: SingleChildScrollView(
@@ -95,7 +68,10 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                   key: databaseProvider.formState,
                   child: Column(
                     children: [
-                      TextFormField(
+                      SizedBox(height: 20),
+                      SizedBox(
+                        width: 377,
+                        child: TextFormField(
                         controller: databaseProvider.titleQuestion,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -106,6 +82,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                         textInputAction: TextInputAction.next,
                         style: TextStyle(color: Colors.black, fontSize: 20),
                         maxLines: null,
+                        minLines: 1,
                         autofocus: true,
                         focusNode: focusNode,
                         decoration: InputDecoration(
@@ -128,6 +105,8 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                           ),
                         ),
                       ),
+                      ),
+                      SizedBox(height: 15),
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
@@ -427,7 +406,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
             ),
           );
         },
-      ),
+     // ),
     );
   }
 }

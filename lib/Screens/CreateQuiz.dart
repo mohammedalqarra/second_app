@@ -1,10 +1,15 @@
+import 'dart:developer';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:second_app/Screens/AddNewQuestion.dart';
+import 'package:second_app/DataBase/databaseController.dart';
 import 'package:second_app/Provider/databaseProvider.dart';
+import 'package:second_app/Models/databaseModel.dart';
+import 'package:second_app/QuestionWidget.dart';
+import 'package:second_app/Screens/AddNewQuestion.dart';
 import 'package:second_app/Screens/homepage.dart';
-import 'package:second_app/app_routes.dart';
-import '../QuestionWidget.dart';
+import '../app_routes.dart';
+import '../StartQuizWidget.dart';
 
 class CreateQuiz extends StatefulWidget {
   const CreateQuiz({Key? key}) : super(key: key);
@@ -14,20 +19,6 @@ class CreateQuiz extends StatefulWidget {
 
 class _CreateQuizState extends State<CreateQuiz> {
   final ScrollController scrollController = ScrollController();
-
-  void navigateToCreateQuiz() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const HomePage()),
-    );
-  }
-
-  void navigateToAddNewQuestion() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const AddNewQuestion()),
-    );
-  }
 
   @override
   void initState() {
@@ -47,12 +38,6 @@ class _CreateQuizState extends State<CreateQuiz> {
           ),
           centerTitle: true,
           backgroundColor: Colors.teal,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              navigateToCreateQuiz();
-            },
-          ),
         ),
         body: databaseProvider.questions.isEmpty
             ? Center(
@@ -65,9 +50,10 @@ class _CreateQuizState extends State<CreateQuiz> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(vertical: 10),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                            minimumSize: Size(600, 50),
+                            elevation: 8,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)),
                         ),
                         onPressed: () {
                           AppRouter.pushWidget(AddNewQuestion());
@@ -77,8 +63,8 @@ class _CreateQuizState extends State<CreateQuiz> {
                           children: const [
                             Padding(
                               padding: EdgeInsets.only(right: 10),
-                              child: Icon(Icons.add,
-                                  size: 16, color: Colors.white),
+                              child:
+                              Icon(Icons.add, size: 16, color: Colors.white),
                             ),
                             Text(
                               'Add new question',
@@ -106,6 +92,33 @@ class _CreateQuizState extends State<CreateQuiz> {
                         fontSize: 16,
                       ),
                     ),
+                    Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Container(
+                        width: 200,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            //  navigateToHomePage();
+                            AppRouter.pushWidget(HomePage());
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.teal,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: const Text(
+                            "Back to Home!",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
                     const Spacer(),
                   ],
                 ),
@@ -114,13 +127,15 @@ class _CreateQuizState extends State<CreateQuiz> {
                 children: [
                   SizedBox(width: MediaQuery.of(context).size.width),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 8),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 20, horizontal: 8),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(vertical: 10),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12)),
-                      ),
+                       minimumSize: Size(600, 50),
+                      elevation: 8,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15))),
                       onPressed: () {
                         AppRouter.pushWidget(AddNewQuestion());
                       },

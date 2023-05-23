@@ -8,7 +8,6 @@ import 'package:second_app/Screens/CreateQuiz.dart';
 import 'package:second_app/Screens/NotQuestion.dart';
 import 'package:second_app/Screens/congratulations.dart';
 import 'package:second_app/Screens/StartQuiz.dart';
-import '../StartQuizWidget.dart';
 import '../app_routes.dart';
 import '../ExitDialog.dart';
 
@@ -27,28 +26,7 @@ class _HomePageState extends State<HomePage> {
     Provider.of<DatabaseProvider>(context, listen: false).selectAllQuestions();
   }
 
-  void navigateToHomePage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => HomePage()),
-    );
-  }
-
-  void navigateToCreateQuizPage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => AddNewQuestion()),
-    );
-  }
-
-  void navigateToStartQuizPage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CreateQuiz()),
-    );
-  }
-
-  void exitApp() {}
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,9 +44,14 @@ class _HomePageState extends State<HomePage> {
                 ));
           },
         ),
-        title: const Text("Quiz app"),
+        title: const Text(
+          "Quiz app",
+          style: TextStyle(
+            fontSize: 20,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 14, 198, 161),
+        backgroundColor: Colors.teal,
       ),
       body: Center(
         child: Column(
@@ -76,39 +59,46 @@ class _HomePageState extends State<HomePage> {
           children: [
             Image.asset(
               'lib/assets/quiz.png',
-              width: 200,
-              height: 200,
+              width: 500,
+              height: 300,
             ),
             SizedBox(width: 200, height: 30),
             Consumer<DatabaseProvider>(
                 builder: (context, databaseProvider, child) {
               return ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.teal,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.all(10),
                   ),
-                  padding: const EdgeInsets.all(10),
-                ),
-                onPressed: () {
-                  databaseProvider.score = 0;
-                  databaseProvider.selectedAnswer = '0';
-                  if (databaseProvider.questions.length < 5) {
-                    AppRouter.pushWidget(NotQuestion());
-                  } else {
-                    AppRouter.pushWidget(StartQuiz());
-                  }
-                },
-                child: const Text(
-                  "Let's Start!",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              );
+                  onPressed: () {
+                    databaseProvider.score = 0;
+                    databaseProvider.selectedAnswer = '0';
+                    if (databaseProvider.questions.length < 5) {
+                      AppRouter.pushWidget(NotQuestion());
+                    } else {
+                      AppRouter.pushWidget(StartQuiz());
+                    }
+                  },
+                  child: Container(
+                    width: 170,
+                    height: 30, // Replace 200 with your desired width value
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 5,
+                        horizontal:
+                            30), // Replace 8.0 with your desired padding value
+                    child: const Text(
+                      "Let's Start!",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ));
             }),
           ],
         ),
@@ -184,7 +174,9 @@ class _HomePageState extends State<HomePage> {
               },
             ),
 
-            const Divider(),
+            const Divider(
+              thickness: 1,
+            ),
             // ListTile(
             //   leading: const Icon(Icons.logout),
             //   title: const Text('Exit'),
@@ -195,17 +187,22 @@ class _HomePageState extends State<HomePage> {
 
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return ExitDialog();
-                  },
-                );
+                // Navigator.pop(context);
+                // showDialog(
+                //   context: context,
+                //   builder: (context) {
+                //     return ExitDialog();
+                //   },
+                // );
+
+                AppRouter.popWidget();
+                showDialog(context: context , builder: (context){
+                  return ExitDialog();
+                });
               },
-              child: ListTile(
-                leading: const Icon(Icons.logout),
-                title: const Text('Exit'),
+              child: const ListTile(
+                leading: Icon(Icons.logout),
+                title: Text('Exit'),
               ),
             ),
           ],

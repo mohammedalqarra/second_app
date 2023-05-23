@@ -20,11 +20,11 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: 380,
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         children: [
@@ -52,14 +52,14 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                       });
                 },
                 child: const Icon(Icons.delete,
-                    color: Color.fromARGB(255, 162, 161, 161), size: 30),
+                    color: Colors.blueGrey, size: 30),
               ),
             ],
           ),
           SizedBox(height: 10),
           Container(
               width: 350,
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(8),
               margin: EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
                 color: widget.dataBaseModel.correctAnswer == 'A'
@@ -78,7 +78,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
               )),
           Container(
               width: 350,
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(8),
               margin: EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
                 color: widget.dataBaseModel.correctAnswer == 'B'
@@ -97,7 +97,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
               )),
           Container(
               width: 350,
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(8),
               margin: EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
                 color: widget.dataBaseModel.correctAnswer == 'C'
@@ -116,7 +116,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
               )),
           Container(
               width: 350,
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(8),
               margin: EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
                 color: widget.dataBaseModel.correctAnswer == 'D'

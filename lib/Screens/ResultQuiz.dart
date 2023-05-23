@@ -30,13 +30,8 @@ class _ResultQuizState extends State<ResultQuiz> {
         appBar: AppBar(
           title: const Text("Quiz app"),
           centerTitle: true,
-          backgroundColor: Color.fromARGB(255, 14, 198, 161),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
+          backgroundColor: Colors.teal,
+  
         ),
         body: Center(
           child: Column(
@@ -64,7 +59,7 @@ class _ResultQuizState extends State<ResultQuiz> {
               Container(
                 margin: const EdgeInsets.only(bottom: 10),
                 child: Text(
-                  'Score: ${databaseProvider.score}/${databaseProvider.questions.length}(${databaseProvider.score.toStringAsFixed(2)}%)',
+                  'Score: ${databaseProvider.score}/${databaseProvider.questions.length}',
                   style: const TextStyle(
                     fontSize: 18,
                     color: Colors.teal,

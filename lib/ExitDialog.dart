@@ -15,13 +15,13 @@ class _ExitDialogState extends State<ExitDialog> {
       title: const Text(
         'Do you want to exit the app?',
         style: TextStyle(
-          color: Colors.teal,
+          color: Colors.black,
         ),
       ),
       content: Text(
         'Are you sur?',
         style: TextStyle(
-          color: Colors.teal,
+          color: Colors.black,
         ),
       ),
       actions: [
@@ -33,6 +33,9 @@ class _ExitDialogState extends State<ExitDialog> {
           },
           child: const Text(
             'No',
+            style: TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
         ElevatedButton(
@@ -40,7 +43,12 @@ class _ExitDialogState extends State<ExitDialog> {
           onPressed: () {
             exit(0);  
           },
-          child: const Text('Yes'),
+          child: const Text(
+          'Yes',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+          ),
         ),
       ],
     );

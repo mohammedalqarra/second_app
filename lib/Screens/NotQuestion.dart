@@ -29,12 +29,6 @@ class _NotQuestionState extends State<NotQuestion> {
         title: Text('Quiz App'),
         centerTitle: true,
         backgroundColor: Colors.teal,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            navigateToCreateQuiz();
-          },
-        ),
       ),
       body: Center(
         child: Column(
@@ -70,31 +64,31 @@ class _NotQuestionState extends State<NotQuestion> {
               height: 200,
             ),
             Padding(
-              padding: EdgeInsets.all(12),
-              child: Container(
-                width: 200,
-                child: ElevatedButton(
-                  onPressed: () {
-                    navigateToHomePage();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.teal,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      padding: EdgeInsets.all(12),
+                      child: Container(
+                        width: 200,
+                        child: ElevatedButton(
+                          onPressed: () {
+                              navigateToHomePage();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.teal,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: const Text(
+                            "Back to Home!",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  child: const Text(
-                    "Back to Home!",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),
