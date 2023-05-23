@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:second_app/DataBase/databaseController.dart';
 import 'package:second_app/Models/databaseModel.dart';
 import 'package:second_app/Provider/databaseProvider.dart';
-import 'package:second_app/app_routes.dart';
 
-class StartQuiz extends StatefulWidget {
+class StartQuizWidget extends StatefulWidget {
   final DataBaseModel dataBaseModel;
 
-  const StartQuiz({Key? key, required this.dataBaseModel}) : super(key: key);
+  const StartQuizWidget({Key? key, required this.dataBaseModel}) : super(key: key);
 
   @override
-  State<StartQuiz> createState() => _StartQuizState();
+  State<StartQuizWidget> createState() => _StartQuizWidgetState();
 }
 
-class _StartQuizState extends State<StartQuiz> {
+class _StartQuizWidgetState extends State<StartQuizWidget> {
   //Change Notifier or a similar
   @override
   Widget build(BuildContext context) {
@@ -39,7 +37,7 @@ class _StartQuizState extends State<StartQuiz> {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             GestureDetector(
               onTap: () {
                 databaseProvider.changeSelectedAnswer('A');
@@ -47,7 +45,7 @@ class _StartQuizState extends State<StartQuiz> {
               child: Container(
                 // width: 380,
                 width: double.infinity,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: databaseProvider.selectedAnswer == 'A'
                       ? Colors.green[300]
@@ -67,14 +65,14 @@ class _StartQuizState extends State<StartQuiz> {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             GestureDetector(
               onTap: () {
                 databaseProvider.changeSelectedAnswer('B');
               },
               child: Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                     color: databaseProvider.selectedAnswer == 'B'
                         ? Colors.green[300]
@@ -93,14 +91,14 @@ class _StartQuizState extends State<StartQuiz> {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             GestureDetector(
               onTap: () {
                 databaseProvider.changeSelectedAnswer('C');
               },
               child: Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: databaseProvider.selectedAnswer == 'C'
                       ? Colors.green[300]
@@ -120,14 +118,14 @@ class _StartQuizState extends State<StartQuiz> {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             GestureDetector(
               onTap: () {
                 databaseProvider.changeSelectedAnswer('D');
               },
               child: Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: databaseProvider.selectedAnswer == 'D'
                       ? Colors.grey[300]

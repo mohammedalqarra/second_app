@@ -1,12 +1,17 @@
 import 'dart:developer';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-
+import 'package:provider/provider.dart';
+import 'package:second_app/DataBase/databaseController.dart';
+import 'package:second_app/Models/databaseModel.dart';
+import 'package:second_app/Provider/databaseProvider.dart';
 import '../Models/databaseModel.dart';
 
 class DatabaseController {
-  late Database _database;
+  //late Database _database;
+  static DatabaseController quizDatabase = DatabaseController();
 
   DatabaseController() {
     initDatabase();
@@ -27,17 +32,22 @@ class DatabaseController {
   // questions is a list of DataBaseModel objects that will store the retrieved questions from the database.
   List<DataBaseModel> questions = [];
 
+  // initDatabase() async {
+  //   database = await createConnectionWithDatabase();
+  // }
+
   Future<void> initDatabase() async {
+    WidgetsFlutterBinding.ensureInitialized();
     final String databasePath = await getDatabasesPath();
     final String path = join(databasePath, 'my_database.db');
 
-    _database = await openDatabase(
+    database = await openDatabase(
       path,
       version: 1,
       onCreate: _createTable,
     );
 
-    database = _database;
+    // database = _database;
   }
 
   // the database by opening a connection.
@@ -60,15 +70,15 @@ class DatabaseController {
   Future<int> insertData(String name, int age) async {
     final Map<String, dynamic> row = {'name': name, 'age': age};
 
-    return await _database.insert('my_table', row);
+    return await database!.insert('my_table', row);
   }
 
   Future<List<Map<String, dynamic>>> getAllData() async {
-    return await _database.query('my_table');
+    return await database!.query('my_table');
   }
 
   Future<void> closeDatabase() async {
-    await _database.close();
+    await database?.close();
   }
 
   Future<void> insertNewQuestion(DataBaseModel dataBaseModel) async {

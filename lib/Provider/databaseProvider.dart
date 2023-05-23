@@ -48,7 +48,8 @@ class DatabaseProvider with ChangeNotifier {
   }
 
   void insertNewQuestion() {
-    DatabaseController().insertNewQuestion(DataBaseModel(
+    DatabaseController().insertNewQuestion(
+      DataBaseModel(
       titleQuestion: titleQuestion.text,
       firstAnswer: firstAnswer.text,
       secondAnswer: secondAnswer.text,

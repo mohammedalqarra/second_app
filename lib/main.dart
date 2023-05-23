@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {
           return MaterialApp(
             routes: {
-              '/lib/Screens/ResultQuiz.dart': (context) =>  ResultQuiz(),
+              '/resultQuiz': (context) =>  ResultQuiz(),
             },
             navigatorKey: AppRouter.navKey,
             debugShowCheckedModeBanner: false,

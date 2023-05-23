@@ -7,7 +7,8 @@ import 'package:second_app/Screens/AddNewQuestion.dart';
 import 'package:second_app/Screens/CreateQuiz.dart';
 import 'package:second_app/Screens/NotQuestion.dart';
 import 'package:second_app/Screens/congratulations.dart';
-import 'package:second_app/StartQuiz.dart';
+import 'package:second_app/Screens/StartQuiz.dart';
+import '../StartQuizWidget.dart';
 import '../app_routes.dart';
 import '../ExitDialog.dart';
 
@@ -95,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                   if (databaseProvider.questions.length < 5) {
                     AppRouter.pushWidget(NotQuestion());
                   } else {
-                    AppRouter.pushWidget(AddNewQuestion());
+                    AppRouter.pushWidget(StartQuiz());
                   }
                 },
                 child: const Text(
@@ -170,21 +171,9 @@ class _HomePageState extends State<HomePage> {
                     databaseProvider.selectedAnswer = '0';
                     AppRouter.popWidget();
                     if (databaseProvider.questions.length < 5) {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => NotQuestion(),
-                      //   ),
-                      // );
                       AppRouter.pushWidget(NotQuestion());
                     } else {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => AddNewQuestion(),
-                      //   ),
-                      // );
-                      AppRouter.pushWidget(AddNewQuestion());
+                      AppRouter.pushWidget(StartQuiz());
                     }
                   },
                   child: const ListTile(
