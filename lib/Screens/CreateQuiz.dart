@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:second_app/Screens/AddNewQuestion.dart';
 import 'package:second_app/Provider/databaseProvider.dart';
 import 'package:second_app/Screens/homepage.dart';
+import 'package:second_app/app_routes.dart';
+import '../QuestionWidget.dart';
 
 class CreateQuiz extends StatefulWidget {
   const CreateQuiz({Key? key}) : super(key: key);
@@ -11,6 +13,8 @@ class CreateQuiz extends StatefulWidget {
 }
 
 class _CreateQuizState extends State<CreateQuiz> {
+  final ScrollController scrollController = ScrollController();
+
   void navigateToCreateQuiz() {
     Navigator.push(
       context,
@@ -23,6 +27,13 @@ class _CreateQuizState extends State<CreateQuiz> {
       context,
       MaterialPageRoute(builder: (context) => const AddNewQuestion()),
     );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<DatabaseProvider>(context, listen: false).selectAllQuestions();
   }
 
   @override
@@ -43,108 +54,128 @@ class _CreateQuizState extends State<CreateQuiz> {
             },
           ),
         ),
-
-        // body: databaseProvider.questions.isEmpty 
-        // ?Center(
-        //   child: Column(
-        //     children: [
-        //       SizedBox(width: MediaQuery.of(context).size.width),
-        //         Padding(
-        //           padding: EdgeInsets.symmetric(vertical: 20,horizontal: 8),
-        //         ),
-        //     ],
-        //   ),
-        // )
-        // body: Column(
-        //   children: [
-        //     // SizedBox(width: MediaQuery.of(context).size.width)
-        //     Container(
-        //       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-        //       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-        //       child: ElevatedButton(
-        //         onPressed: () {
-        //           // navigateToAddNewQuestion();
-        //           AppRouter.pushWidget(AddNewQuestion());
-        //         },
-        //         style: ElevatedButton.styleFrom(
-        //             backgroundColor: Colors.teal,
-        //             minimumSize: const Size(600, 50),
-        //             elevation: 8,
-        //             shape: RoundedRectangleBorder(
-        //                 borderRadius: BorderRadius.circular(15))),
-        //         child: Row(
-        //           mainAxisSize: MainAxisSize.min,
-        //           children: const [
-        //             Padding(
-        //               padding: EdgeInsets.only(right: 10),
-        //               child: Icon(Icons.add, size: 16, color: Colors.white),
-        //             ),
-        //             Text(
-        //               'Add new question',
-        //               style: TextStyle(
-        //                 fontSize: 16,
-        //                 color: Colors.white,
-        //                 fontWeight: FontWeight.w500,
-        //               ),
-        //             ),
-        //            // SizedBox(width: 10),
-        //            const Spacer(),
-        //           ],
-        //         ),
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        // floatingActionButton: FloatingActionButton(
-        //   child: const Icon(Icons.add),
-        //   backgroundColor: Colors.teal,
-        //   onPressed: () {
-        //     navigateToAddNewQuestion();
-        //   },
-        // ),
+        body: databaseProvider.questions.isEmpty
+            ? Center(
+                child: Column(
+                  children: [
+                    SizedBox(width: MediaQuery.of(context).size.width),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 8),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        onPressed: () {
+                          AppRouter.pushWidget(AddNewQuestion());
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: const [
+                            Padding(
+                              padding: EdgeInsets.only(right: 10),
+                              child: Icon(Icons.add,
+                                  size: 16, color: Colors.white),
+                            ),
+                            Text(
+                              'Add new question',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    Image.asset(
+                      'lib/assets/faq.png',
+                      width: 250,
+                      height: 250,
+                    ),
+                    const Text(
+                      'You must add at least 5 question to start',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                    ),
+                    const Spacer(),
+                  ],
+                ),
+              )
+            : Column(
+                children: [
+                  SizedBox(width: MediaQuery.of(context).size.width),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 8),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12)),
+                      ),
+                      onPressed: () {
+                        AppRouter.pushWidget(AddNewQuestion());
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.only(right: 10),
+                            child:
+                                Icon(Icons.add, size: 16, color: Colors.white),
+                          ),
+                          Text(
+                            'Add new question',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    color: Colors.white,
+                    width: 393,
+                    height: 679,
+                    child: Scrollbar(
+                      radius: Radius.circular(12),
+                      thickness: 6,
+                      thumbVisibility: true,
+                      controller: scrollController,
+                      child: ListView.builder(
+                        controller: scrollController,
+                        itemCount: databaseProvider.questions.length,
+                        itemBuilder: (context, int index) {
+                          return QuestionWidget(
+                            dataBaseModel: databaseProvider.questions[index],
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
       );
     });
   }
 }
 
-
 //  body: SingleChildScrollView(
 //         child: Center(
 //           child: Column(
 //             children: [
-              // Container(
-              //   margin:
-              //       const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              //   child: ElevatedButton(
-              //     onPressed: () {
-              //       navigateToAddNewQuestion();
-              //     },
-              //     child: Row(
-              //       mainAxisSize: MainAxisSize.min,
-              //       children: const [
-              //         Padding(
-              //           padding: EdgeInsets.only(right: 10),
-              //           child: Icon(Icons.add, size: 16, color: Colors.white),
-              //         ),
-              //         Text(
-              //           'Add new question',
-              //           style: TextStyle(
-              //             fontSize: 16,
-              //             color: Colors.white,
-              //             fontWeight: FontWeight.w500,
-              //           ),
-              //         ),
-              //         SizedBox(width: 10),
-              //       ],
-              //     ),
-              //     style: ElevatedButton.styleFrom(
-              //         backgroundColor: Colors.teal,
-              //         minimumSize: Size(600, 50),
-              //         elevation: 8,
-              //         shape: RoundedRectangleBorder(
-              //             borderRadius: BorderRadius.circular(15))),
-              //   ),
-              // ),
 //               Container(
 //                 margin:
 //                     const EdgeInsets.symmetric(horizontal: 10, vertical: 10),

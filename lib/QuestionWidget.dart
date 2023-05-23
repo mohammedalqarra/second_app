@@ -33,84 +33,88 @@ class _QuestionWidgetState extends State<QuestionWidget> {
               SizedBox(
                 width: 320,
                 child: Text(
-                  widget.dataBaseModel.titleQuestion ,
-                  style: const TextStyle(fontSize: 20, color: Colors.white , backgroundColor: Colors.teal),
+                  widget.dataBaseModel.titleQuestion,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                      backgroundColor: Colors.teal),
                 ),
               ),
               const Spacer(),
-              GestureDetector(onTap: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return DeleteDialog(
-                        deleteID: widget.dataBaseModel.id!,
-                      );
-                    });
-              },
-              child: const Icon(
-                Icons.delete,
-                color: Color.fromARGB(255, 162, 161, 161),
-                size: 30),
+              GestureDetector(
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return DeleteDialog(
+                          deleteID: widget.dataBaseModel.id!,
+                        );
+                      });
+                },
+                child: const Icon(Icons.delete,
+                    color: Color.fromARGB(255, 162, 161, 161), size: 30),
               ),
             ],
           ),
           SizedBox(height: 10),
           Container(
-            width:350,
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.only(top:10),
-            decoration:  BoxDecoration(
-              color: widget.dataBaseModel.correctAnswer == 'A' ? Colors.green[300] : Colors.white,
-              
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Text(
-              widget.dataBaseModel.firstAnswer,
-              style: TextStyle(
-                              color: widget.dataBaseModel.correctAnswer == 'A'
-                      ? Colors.green[300]
-                      : Colors.white,
-                      fontSize: 20,
+              width: 350,
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.only(top: 10),
+              decoration: BoxDecoration(
+                color: widget.dataBaseModel.correctAnswer == 'A'
+                    ? Colors.green[300]
+                    : Colors.white,
+                borderRadius: BorderRadius.circular(12),
               ),
-            )
-          ),
+              child: Text(
+                widget.dataBaseModel.firstAnswer,
+                style: TextStyle(
+                  color: widget.dataBaseModel.correctAnswer == 'A'
+                      ? Colors.white
+                      : Colors.black,
+                  fontSize: 20,
+                ),
+              )),
           Container(
-             width:350,
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.only(top:10),
-            decoration:  BoxDecoration(
-              color: widget.dataBaseModel.correctAnswer == 'B' ? Colors.green[300] : Colors.white,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Text(
-              widget.dataBaseModel.secondAnswer,
-              style: TextStyle(
-                              color: widget.dataBaseModel.correctAnswer == 'B'
-                      ? Colors.green[300]
-                      : Colors.white,
-                      fontSize: 20,
+              width: 350,
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.only(top: 10),
+              decoration: BoxDecoration(
+                color: widget.dataBaseModel.correctAnswer == 'B'
+                    ? Colors.green[300]
+                    : Colors.white,
+                borderRadius: BorderRadius.circular(12),
               ),
-            )
-          ),
+              child: Text(
+                widget.dataBaseModel.secondAnswer,
+                style: TextStyle(
+                  color: widget.dataBaseModel.correctAnswer == 'B'
+                      ? Colors.white
+                      : Colors.black,
+                  fontSize: 20,
+                ),
+              )),
           Container(
-            width:350,
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.only(top:10),
-            decoration:  BoxDecoration(
-              color: widget.dataBaseModel.correctAnswer == 'C' ? Colors.green[300] : Colors.white,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Text(
-              widget.dataBaseModel.thirdAnswer,
-              style: TextStyle(
-                              color: widget.dataBaseModel.correctAnswer == 'C'
-                      ? Colors.green[300]
-                      : Colors.white,
-                      fontSize: 20,
+              width: 350,
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.only(top: 10),
+              decoration: BoxDecoration(
+                color: widget.dataBaseModel.correctAnswer == 'C'
+                    ? Colors.green[300]
+                    : Colors.white,
+                borderRadius: BorderRadius.circular(12),
               ),
-            )
-          ),
-           Container(
+              child: Text(
+                widget.dataBaseModel.thirdAnswer,
+                style: TextStyle(
+                  color: widget.dataBaseModel.correctAnswer == 'C'
+                      ? Colors.white
+                      : Colors.black,
+                  fontSize: 20,
+                ),
+              )),
+          Container(
               width: 350,
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.only(top: 10),
@@ -124,8 +128,8 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 widget.dataBaseModel.fourthAnswer,
                 style: TextStyle(
                   color: widget.dataBaseModel.correctAnswer == 'D'
-                      ? Colors.green[300]
-                      : Colors.white,
+                      ? Colors.white
+                      : Colors.black,
                   fontSize: 20,
                 ),
               )),
