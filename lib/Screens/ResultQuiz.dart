@@ -81,25 +81,33 @@ class _ResultQuizState extends State<ResultQuiz> {
                 ),
               ),
               SizedBox(height: 20),
-              Container(
-                margin: const EdgeInsets.only(top: 20),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Navigate back to the home page
-                    // Navigator.pop(context);
-                    navigateToResultQuiz();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.teal,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 10),
-                        shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      )
-                  ),
-                  child: const Text('Back to Home'),
-                ),
-              ),
+                Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Container(
+                        width: 200,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            navigateToResultQuiz();
+                           // AppRouter.pushWidget(HomePage());
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.teal,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: const Text(
+                            "Back to Home!",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
             ],
           ),
         ),

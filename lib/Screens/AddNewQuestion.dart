@@ -38,375 +38,329 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
   List<String> items = <String>['A', 'B', 'C', 'D'];
   String correctAnswer = 'A';
 
-  // @override
-  // void dispose() {
-  //   focusNode.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // return WillPopScope(
-    //   onWillPop: () async {
-    //     print('Back Button pressed');
-    //     final shouldPop = await showWarning(context);
-    //     return shouldPop ?? false;
-    //   },
-      return Consumer<DatabaseProvider>(
+    return WillPopScope(
+      onWillPop: () async {
+        print('Back Button pressed');
+        final shouldPop = await showWarning(context);
+        return shouldPop ?? false;
+      },
+    child: Consumer<DatabaseProvider>(
         builder: (context, databaseProvider, child) {
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.teal,
-              title: const Text("Add new question"),
-              centerTitle: true,
-            ),
-            body: SingleChildScrollView(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Form(
-                  key: databaseProvider.formState,
-                  child: Column(
-                    children: [
-                      SizedBox(height: 20),
-                      SizedBox(
-                        width: 377,
-                        child: TextFormField(
-                        controller: databaseProvider.titleQuestion,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter some text titleQuestion';
-                          }
-                          return null;
-                        },
-                        textInputAction: TextInputAction.next,
-                        style: TextStyle(color: Colors.black, fontSize: 20),
-                        maxLines: null,
-                        minLines: 1,
-                        autofocus: true,
-                        focusNode: focusNode,
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.question_mark,
-                            color: Color.fromRGBO(82, 78, 78, 0.506),
-                          ),
-                          labelText: "Question",
-                          labelStyle: const TextStyle(
-                            color: Color.fromRGBO(82, 78, 78, 0.506),
-                          ),
-                          fillColor: Colors.white,
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.teal),
-                            borderRadius: BorderRadius.circular(10),
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.teal,
+          title: const Text("Add new question"),
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            key: databaseProvider.formState,
+            child: Form(
+              key: databaseProvider.formState,
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: databaseProvider.titleQuestion,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text titleQuestion';
+                      }
+                      return null;
+                    },
+                    autofocus: true,
+                    focusNode: focusNode,
+                    maxLines: null,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: Colors.teal, width: 2)),
+                      prefixIcon: Icon(
+                        Icons.question_mark,
+                        color: Colors.blueGrey,
+                      ),
+                      labelText: 'Question',
+                      labelStyle: TextStyle(
+                        color: Colors.blueGrey,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 11),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                          backgroundColor: Colors.amber,
+                          radius: 25,
+                          child: Center(
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      ),
-                      SizedBox(height: 15),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.symmetric(vertical: 10),
-                              child: Row(
-                                children: [
-                                  const CircleAvatar(
-                                    backgroundColor: Colors.amber,
-                                    radius: 20,
-                                    child: Text(
-                                      "A",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      padding: const EdgeInsets.only(left: 8),
-                                      child: TextFormField(
-                                        controller:
-                                            databaseProvider.firstAnswer,
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Please enter some text firstAnswer';
-                                          }
-                                          return null;
-                                        },
-                                        textInputAction: TextInputAction.next,
-                                        maxLines: null,
-                                        decoration: InputDecoration(
-                                          labelText: "First Answer",
-                                          labelStyle: const TextStyle(
-                                            color: Color.fromRGBO(
-                                                82, 78, 78, 0.506),
-                                          ),
-                                          fillColor: Colors.white,
-                                          filled: true,
-                                          border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                                color: Colors.teal),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.symmetric(vertical: 10),
-                              child: Row(
-                                children: [
-                                  const CircleAvatar(
-                                    backgroundColor: Colors.teal,
-                                    radius: 20,
-                                    child: Text(
-                                      "B",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      padding: const EdgeInsets.only(left: 8),
-                                      child: TextFormField(
-                                        controller:
-                                            databaseProvider.secondAnswer,
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Please enter some text secondAnswer';
-                                          }
-                                          return null;
-                                        },
-                                        textInputAction: TextInputAction.next,
-                                        maxLines: null,
-                                        decoration: InputDecoration(
-                                          labelText: "Second Answer",
-                                          // hintText: "Enter Second answer",
-                                          labelStyle: const TextStyle(
-                                            color: Color.fromRGBO(
-                                                82, 78, 78, 0.506),
-                                          ),
-                                          fillColor: Colors.white,
-                                          filled: true,
-                                          border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                              color: Colors.teal,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                        ),
-                                        obscureText: true,
-                                        keyboardType: TextInputType.datetime,
-                                        //onChanged: (value) =>  name = value,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.symmetric(vertical: 10),
-                              child: Row(
-                                children: [
-                                  const CircleAvatar(
-                                    backgroundColor:
-                                        Color.fromARGB(255, 109, 150, 221),
-                                    radius: 20,
-                                    child: Text(
-                                      "C",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      padding: const EdgeInsets.only(left: 8),
-                                      child: TextFormField(
-                                        controller:
-                                            databaseProvider.thirdAnswer,
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Please enter some text thirdAnswer';
-                                          }
-                                          return null;
-                                        },
-                                        textInputAction: TextInputAction.next,
-                                        maxLines: null,
-                                        decoration: InputDecoration(
-                                          labelText: "Third Answer",
-                                          labelStyle: const TextStyle(
-                                            color: Color.fromRGBO(
-                                                82, 78, 78, 0.506),
-                                          ),
-                                          fillColor: Colors.white,
-                                          filled: true,
-                                          border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                              color: Colors.teal,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.symmetric(vertical: 10),
-                              child: Row(
-                                children: [
-                                  const CircleAvatar(
-                                    backgroundColor: Colors.pink,
-                                    radius: 20,
-                                    child: Text(
-                                      "D",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      padding: const EdgeInsets.only(left: 8),
-                                      child: TextFormField(
-                                        controller:
-                                            databaseProvider.fourthAnswer,
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Please enter some text fourthAnswer';
-                                          }
-                                          return null;
-                                        },
-                                        maxLines: null,
-                                        decoration: InputDecoration(
-                                          labelText: "Fourth Answer",
-                                          labelStyle: const TextStyle(
-                                            color: Color.fromRGBO(
-                                                82, 78, 78, 0.506),
-                                          ),
-                                          fillColor: Colors.white,
-                                          filled: true,
-                                          border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                              color: Colors.teal,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: 230,
-                              child: const Text(
-                                "Select the correct answer",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 20,
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.only(left: 12),
+                            child: TextFormField(
+                              controller: databaseProvider.firstAnswer,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text firstAnswer';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                        color: Colors.teal, width: 2)),
+                                labelText: 'First Answer',
+                                labelStyle: TextStyle(
+                                  color: Colors.blueGrey,
                                 ),
                               ),
                             ),
-                            Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 5),
-                              child: DropdownButton<String>(
-                                elevation: 50,
-                                iconSize: 20,
-                                icon: Icon(Icons.arrow_drop_down,
-                                    color: Colors.black),
-                                items: items.map((String value) {
-                                  Color itemColor = Colors
-                                      .teal; // Specify your desired color here
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(
-                                      value,
-                                      style: TextStyle(color: itemColor),
-                                    ),
-                                  );
-                                }).toList(),
-                                onChanged: (String? correctAnswer) {
-                                  setState(() {
-                                    databaseProvider.correctAnswer =
-                                        correctAnswer!;
-                                  });
-                                },
-                                value: correctAnswer,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 11),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                          backgroundColor: Colors.green,
+                          radius: 25,
+                          child: Center(
+                            child: Text(
+                              "B",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: const Size.fromHeight(50),
-                          textStyle: const TextStyle(fontSize: 15),
-                          backgroundColor: Colors.teal,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
-                        onPressed: () {
-                          //  navigateToAddNewQuestion();
-                          if (databaseProvider.formState.currentState!
-                              .validate()) {
-                            databaseProvider.insertNewQuestion();
-                          }
-                        },
-                        child: const Text(
-                          'Add question',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.only(left: 12),
+                            child: TextFormField(
+                              controller: databaseProvider.secondAnswer,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text firstAnswer';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                        color: Colors.teal, width: 2)),
+                                labelText: 'Second Answer',
+                                labelStyle: TextStyle(
+                                  color: Colors.blueGrey,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 11),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                          backgroundColor: Colors.blueGrey,
+                          radius: 25,
+                          child: Center(
+                            child: Text(
+                              "C",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.only(left: 12),
+                            child: TextFormField(
+                              controller: databaseProvider.thirdAnswer,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text firstAnswer';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                        color: Colors.teal, width: 2)),
+                                labelText: 'Third Answer',
+                                labelStyle: TextStyle(
+                                  color: Colors.blueGrey,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 11),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                          backgroundColor: Colors.pink,
+                          radius: 25,
+                          child: Center(
+                            child: Text(
+                              "D",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.only(left: 12),
+                            child: TextFormField(
+                              controller: databaseProvider.fourthAnswer,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text firstAnswer';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                        color: Colors.teal, width: 2)),
+                                labelText: 'Fourth Answer',
+                                labelStyle: TextStyle(
+                                  color: Colors.blueGrey,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      //   mainAxisAlignment: Main,
+                      children: [
+                        Container(
+                          width: 200,
+                          child: const Text(
+                            "Select The Correct Answer",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        //   Spacer(),
+                        Container(
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 5),
+                            child: DropdownButton<String>(
+                              // alignment: Alignment.center,
+                              elevation: 30,
+                              iconSize: 20,
+                              icon: const Icon(Icons.arrow_drop_down,
+                                  color: Colors.black),
+                              items: items.map((String value) {
+                                Color itemColor = Colors
+                                    .teal; // Specify your desired color here
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: TextStyle(color: itemColor),
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (String? correctAnswer) {
+                                setState(() {
+                                  correctAnswer = databaseProvider
+                                      .correctAnswer = correctAnswer!;
+                                });
+                              },
+                              value: correctAnswer,
+                            )),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(50),
+                      textStyle: const TextStyle(fontSize: 15),
+                      backgroundColor: Colors.teal,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
+                    onPressed: () {
+                      //  navigateToAddNewQuestion();
+                      if (databaseProvider.formState.currentState!.validate()) {
+                        databaseProvider.insertNewQuestion();
+                      }
+                    },
+                    child: const Text(
+                      'Add question',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
-          );
-        },
-     // ),
-    );
+          ),
+        ),
+      );
+    }
+    ));
   }
 }
