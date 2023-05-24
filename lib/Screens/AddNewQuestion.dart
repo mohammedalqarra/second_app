@@ -299,12 +299,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
-                            items: [
-                              "A",
-                              "B",
-                              "C",
-                              "D",
-                            ].map((String value) {
+                            items: items.map((String value) {
                               return DropdownMenuItem(
                                 value: value,
                                 child: Text(

@@ -66,6 +66,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 color: widget.dataBaseModel.correctAnswer == 'A'
                     ? Colors.white
                     : Colors.black,
+                    
                 fontSize: 20,
               ),
               textAlign: TextAlign.center,
