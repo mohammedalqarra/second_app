@@ -13,7 +13,7 @@ class DatabaseProvider with ChangeNotifier {
   TextEditingController secondAnswer = TextEditingController();
   TextEditingController thirdAnswer = TextEditingController();
   TextEditingController fourthAnswer = TextEditingController();
-  String correctAnswer = 'B';
+  String correctAnswer = 'A';
 
   int score = 0;
   String selectedAnswer = '0';

@@ -42,14 +42,12 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        print('Back Button pressed');
-        final shouldPop = await showWarning(context);
-        return shouldPop ?? false;
-      },
-    child: Consumer<DatabaseProvider>(
-        builder: (context, databaseProvider, child) {
+    return WillPopScope(onWillPop: () async {
+      print('Back Button pressed');
+      final shouldPop = await showWarning(context);
+      return shouldPop ?? false;
+    }, child:
+        Consumer<DatabaseProvider>(builder: (context, databaseProvider, child) {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.teal,
@@ -285,45 +283,46 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                     child: Row(
                       //   mainAxisAlignment: Main,
                       children: [
-                        Container(
-                          width: 250,
-                          child: const Text(
-                            "Select The Correct Answer",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18,
-                            ),
+                        const Text(
+                          "Select The Correct Answer",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
                           ),
                         ),
                         Spacer(),
                         Container(
-                            margin: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
-                            child: DropdownButton<String>(
-                              // alignment: Alignment.center,
-                              elevation: 30,
-                              iconSize: 20,
-                              icon: const Icon(Icons.arrow_drop_down,
-                                  color: Colors.black),
-                              items: items.map((String value) {
-                                Color itemColor = Colors
-                                    .teal; // Specify your desired color here
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(
-                                    value,
-                                    style: TextStyle(color: itemColor),
+                          margin: const EdgeInsets.symmetric(horizontal: 20),
+                          child: DropdownButton(
+                            style: const TextStyle(
+                              color: Colors.teal,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            items: [
+                              "A",
+                              "B",
+                              "C",
+                              "D",
+                            ].map((String value) {
+                              return DropdownMenuItem(
+                                value: value,
+                                child: Text(
+                                  value,
+                                  style: const TextStyle(
+                                    color: Colors.teal, // Set color to teal
                                   ),
-                                );
-                              }).toList(),
-                              onChanged: (String? correctAnswer) {
-                                setState(() {
-                                  correctAnswer = databaseProvider
-                                      .correctAnswer = correctAnswer!;
-                                });
-                              },
-                              value: correctAnswer,
-                            )),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (value) {
+                              setState(() {
+                                correctAnswer = value!;
+                              });
+                            },
+                            value: correctAnswer,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -357,7 +356,6 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
           ),
         ),
       );
-    }
-    ));
+    }));
   }
 }
