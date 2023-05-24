@@ -78,8 +78,8 @@ class _StartQuizWidgetState extends State<StartQuizWidget> {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                     color: databaseProvider.selectedAnswer == 'B'
-                        ? Colors.green[300]
-                        : Colors.white,
+                          ? Colors.green[300]
+                      : Colors.white,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
                       color: Colors.teal,
@@ -133,7 +133,7 @@ class _StartQuizWidgetState extends State<StartQuizWidget> {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: databaseProvider.selectedAnswer == 'D'
-                      ? Colors.grey[300]
+                     ? Colors.green[300]
                       : Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(

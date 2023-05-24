@@ -51,7 +51,7 @@ class _StartQuizState extends State<StartQuiz> {
               children: [
                 Text(
                   'Question ${currentIndex + 1}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.teal,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -59,7 +59,7 @@ class _StartQuizState extends State<StartQuiz> {
                 ),
                 Text(
                   '/${databaseProvider.questions.length}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.blueGrey,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -137,7 +137,7 @@ class _StartQuizState extends State<StartQuiz> {
                             : null,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         Text(
                           'Next',
                           style: TextStyle(fontSize: 20),
