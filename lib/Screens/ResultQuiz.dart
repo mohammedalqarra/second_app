@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:second_app/Provider/databaseProvider.dart';
-import 'package:second_app/DataBase/databaseController.dart';
-import 'package:second_app/Models/databaseModel.dart';
 import 'package:second_app/Screens/homepage.dart';
 
 class ResultQuiz extends StatefulWidget {
@@ -11,6 +8,7 @@ class ResultQuiz extends StatefulWidget {
 
   @override
   _ResultQuizState createState() => _ResultQuizState();
+
 }
 
 class _ResultQuizState extends State<ResultQuiz> {
@@ -31,17 +29,15 @@ class _ResultQuizState extends State<ResultQuiz> {
           title: const Text("Quiz app"),
           centerTitle: true,
           backgroundColor: Colors.teal,
-  
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 20),
               Container(
-                margin: const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.all(10),
                 child: Text(
-                  databaseProvider.resultMessage,
+                  databaseProvider.resultTitle,
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -55,23 +51,24 @@ class _ResultQuizState extends State<ResultQuiz> {
                 width: 200,
                 height: 200,
               ),
-              SizedBox(height: 20),
               Container(
-                margin: const EdgeInsets.only(bottom: 10),
-                child: Text(
-                  'Score: ${databaseProvider.score}/${databaseProvider.questions.length}',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.teal,
-                    fontWeight: FontWeight.w600,
+                // width: 250,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    'Score: ${databaseProvider.score}/${databaseProvider.questions.length}',
+                    style: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.teal,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
-              // SizedBox(height: 20),
               Container(
-                margin: const EdgeInsets.only(bottom: 5),
+                margin: const EdgeInsets.only(top: 5),
                 child: Text(
-                  databaseProvider.resultTitle,
+                  databaseProvider.resultMessage,
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.normal,
@@ -80,34 +77,34 @@ class _ResultQuizState extends State<ResultQuiz> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              SizedBox(height: 20),
-                Padding(
-                      padding: EdgeInsets.all(12),
-                      child: Container(
-                        width: 200,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            navigateToResultQuiz();
-                           // AppRouter.pushWidget(HomePage());
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.teal,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          child: const Text(
-                            "Back to Home!",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: SizedBox(
+                  width: 200,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      navigateToResultQuiz();
+                      // AppRouter.pushWidget(HomePage());
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.teal,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
+                    child: const Text(
+                      "Back to Home!",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -115,76 +112,3 @@ class _ResultQuizState extends State<ResultQuiz> {
     });
   }
 }
-
-
-
-      // body: Center(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //       Container(
-      //         // width: 250,
-      //         child: const Padding(
-      //           padding: EdgeInsets.all(10),
-      //           child: Text(
-      //             "Oopps!",
-      //             style: TextStyle(
-      //                 color: Colors.green,
-      //                 fontSize: 24,
-      //                 fontWeight: FontWeight.bold),
-      //             textAlign: TextAlign.center,
-      //           ),
-      //         ),
-      //       ),
-      //       Image.asset(
-      //         'lib/assets/fail.png',
-      //         width: 200,
-      //         height: 200,
-      //       ),
-      //       Container(
-      //         // width: 250,
-      //         child: const Padding(
-      //           padding: EdgeInsets.symmetric(horizontal: 10),
-      //           child: Text(
-      //             'Your Score : 2 / 10',
-      //             style: TextStyle(
-      //                 fontSize: 15,
-      //                 color: Colors.green,
-      //                 fontWeight: FontWeight.bold),
-      //             textAlign: TextAlign.center,
-      //           ),
-      //         ),
-      //       ),
-      // Container(
-      //   child: const Text(
-      //     "Sorry, better luck next time!",
-      //     style: TextStyle(
-      //       color: Colors.black,
-      //       fontSize: 16,
-      //     ),
-      //     textAlign: TextAlign.center,
-      //   ),
-      // ),
-      //       SizedBox(height: 20),
-      //       Container(
-      //         width: 200,
-      // decoration: BoxDecoration(
-      //   color: Color.fromARGB(255, 14, 198, 161),
-      //   borderRadius: BorderRadius.circular(10),
-      // ),
-      //         child: const Padding(
-      //           padding: EdgeInsets.all(10),
-      //           child: Text(
-      //             "Back To home",
-      //             style: TextStyle(
-      //               fontSize: 16,
-      //               fontWeight: FontWeight.bold,
-      //               color: Colors.white,
-      //             ),
-      //             textAlign: TextAlign.center,
-      //           ),
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),

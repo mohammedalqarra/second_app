@@ -15,9 +15,9 @@ class DatabaseProvider with ChangeNotifier {
   TextEditingController fourthAnswer = TextEditingController();
   String correctAnswer = 'B';
 
-  int score = 0 ;
+  int score = 0;
   String selectedAnswer = '0';
-  changeSelectedAnswer(String selected){
+  changeSelectedAnswer(String selected) {
     selectedAnswer = selected;
     notifyListeners();
   }
@@ -26,25 +26,25 @@ class DatabaseProvider with ChangeNotifier {
   String imagePath = '';
   String resultMessage = '';
 
-  calculateResult(){
-    if (score >= questions.length * 0.75){
+  calculateResult() {
+    double  scorePercentage  = score / questions.length;
+    if (scorePercentage >=  0.75) {
       resultTitle = 'Congratulations!';
       imagePath = 'lib/assets/result.jpg';
       resultMessage = "You're a superstar!";
-    }else if(score >= questions.length * 0.50){
+    } else if (scorePercentage >=  0.50 ) {
       resultTitle = 'Congratulations!';
       imagePath = 'lib/assets/result.jpg';
       resultMessage = "Keep up the good work!";
-    }else{
+    } else {
       resultTitle = 'Oops!';
       imagePath = 'lib/assets/fail.png';
       resultMessage = "Sorry, better luck next time!";
     }
-
   }
+
   void insertNewQuestion() {
-    DatabaseController.quizDatabase.insertNewQuestion(
-      DataBaseModel(
+    DatabaseController.quizDatabase.insertNewQuestion(DataBaseModel(
       titleQuestion: titleQuestion.text,
       firstAnswer: firstAnswer.text,
       secondAnswer: secondAnswer.text,

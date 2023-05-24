@@ -4,8 +4,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:second_app/Provider/databaseProvider.dart';
-import 'package:second_app/DataBase/databaseController.dart';
-import 'package:second_app/Models/databaseModel.dart';
 import '../StartQuizWidget.dart';
 import '../ExitDialog.dart';
 

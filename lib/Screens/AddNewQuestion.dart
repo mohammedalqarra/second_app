@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:second_app/Screens/congratulations.dart';
-import 'package:second_app/Screens/homepage.dart';
-import 'package:second_app/DataBase/databaseController.dart';
-import 'package:second_app/Models/databaseModel.dart';
 import 'package:second_app/Provider/databaseProvider.dart';
 
 class AddNewQuestion extends StatefulWidget {
@@ -290,7 +286,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                       //   mainAxisAlignment: Main,
                       children: [
                         Container(
-                          width: 200,
+                          width: 250,
                           child: const Text(
                             "Select The Correct Answer",
                             style: TextStyle(
@@ -299,10 +295,10 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                             ),
                           ),
                         ),
-                        //   Spacer(),
+                        Spacer(),
                         Container(
                             margin: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 5),
+                                horizontal: 15, vertical: 5),
                             child: DropdownButton<String>(
                               // alignment: Alignment.center,
                               elevation: 30,
@@ -351,6 +347,7 @@ class _AddNewQuestionState extends State<AddNewQuestion> {
                       'Add question',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        fontSize: 20,
                       ),
                     ),
                   )

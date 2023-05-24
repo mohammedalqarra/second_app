@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:second_app/DataBase/databaseController.dart';
-import 'package:second_app/Models/databaseModel.dart';
 import 'package:provider/provider.dart';
 import 'package:second_app/Provider/databaseProvider.dart';
 import 'package:second_app/app_routes.dart';
@@ -20,7 +17,7 @@ class _DeleteDialogState extends State<DeleteDialog> {
     return AlertDialog(
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(12),
       ),
       content: Container(
         width: 400, // Set the width of the dialog

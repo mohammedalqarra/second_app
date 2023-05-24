@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:second_app/Models/databaseModel.dart';
 import 'package:second_app/Provider/databaseProvider.dart';
-import 'package:second_app/DataBase/databaseController.dart';
-import 'package:second_app/Models/databaseModel.dart';
 
 class StartQuizWidget extends StatefulWidget {
   const StartQuizWidget({Key? key, required this.dataBaseModel})
