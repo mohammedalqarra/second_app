@@ -11,6 +11,8 @@ I developed this app (create a quiz) as a project for an undergraduate class usi
 - validation
 A few resources to get you started if this is your first Flutter project:
 
+![dbe78a99-ac53-42af-a21e-61716d0d2ae5](https://github.com/mohammedalqarra/second_app/assets/96340073/90e8e312-b17d-46eb-99ec-c5d4305823d0)
+
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
