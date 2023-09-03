@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:second_app/Provider/databaseProvider.dart';
 import '../StartQuizWidget.dart';
 import '../ExitDialog.dart';
-
+  
 class StartQuiz extends StatefulWidget {
   const StartQuiz({
     Key? key,
@@ -79,6 +79,25 @@ class _StartQuizState extends State<StartQuiz> {
                       itemBuilder: (context, int currentIndex) {
                         return StartQuizWidget(
                           dataBaseModel: databaseProvider.questions[currentIndex],
+                          function:  () {
+                            print('beforee');
+                            if (databaseProvider.selectedAnswer ==
+                                databaseProvider.questions[currentIndex]
+                                    .correctAnswer) {
+                              print('afterr');
+                              databaseProvider.score++;
+                              log(databaseProvider.score.toString());
+                            }
+                            nextItem();
+                            print('after2 $currentIndex');
+                            databaseProvider.changeSelectedAnswer('0');
+                            if(currentIndex+1==databaseProvider.questions.length){
+                              databaseProvider.calculateResult();
+                              Navigator.of(context)
+                                  .pushReplacementNamed('/resultQuiz');
+                            }
+
+                          },
                         );
                       }),
                 ),

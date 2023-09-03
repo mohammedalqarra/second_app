@@ -15,7 +15,6 @@ class DatabaseController {
   DatabaseController() {
     initDatabase();
   }
-  // The Database Controller class is defined, representing a controller for managing the database operations.
 
   static String tableQuestion = 'quizTable';
   static String questionId = 'id';
@@ -49,9 +48,7 @@ class DatabaseController {
     // database = _database;
   }
 
-  // the database by opening a connection.
   Future<void> _createTable(Database db, int version) async {
-    // it executes an SQL command to create a table with the provided table and column names.
 
     await db.execute('''
      CREATE TABLE  $tableQuestion (
